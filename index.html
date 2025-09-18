@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SolveSphere — Smart Answers, Simple Guides</title>
+  <meta name="description" content="SolveSphere — step-by-step guides, AI tools, tech fixes, game lists and health tips. Practical solutions and deep guides that actually help." />
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#06b6d4; /* cyan */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1200px;
+      --shadow: 0 6px 24px rgba(2,6,23,0.6);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+    /* NAVBAR */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+    .site-title{font-size:18px;font-weight:700}
+    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    .nav-links a:hover{background:var(--glass);color:#fff}
+
+    .search-wrap{display:flex;align-items:center;gap:10px}
+    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
+
+    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;margin:18px 0}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+    .hero h1{font-size:28px;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero-actions{display:flex;gap:12px}
+
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;min-width:120px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    /* FEATURED & CATEGORIES */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .featured{grid-column:1 / span 2;background:linear-gradient(90deg,rgba(6,182,212,0.1), rgba(124,58,237,0.06));padding:18px;border-radius:14px}
+    .featured img{width:100%;border-radius:10px;display:block}
+    .featured h3{margin:10px 0}
+
+    .category-card{background:var(--card);padding:14px;border-radius:12px}
+    .category-card h4{margin:0 0 8px}
+    .category-card p{color:var(--muted);margin:0}
+
+    /* LIST of POSTS */
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .post{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .post .thumb{height:120px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#0b1220);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .post h5{margin:10px 0 6px;font-size:16px}
+    .post p{color:var(--muted);font-size:14px;margin:0}
+    .tag{display:inline-block;margin-top:8px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:12px}
+
+    /* SIDEBAR */
+    .sidebar{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px}
+    .newsletter input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6}
+    .newsletter button{margin-top:8px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#022;cursor:pointer}
+
+    /* FOOTER */
+    footer{margin-top:38px;padding:28px 0;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .footer-grid h6{color:#fff;margin-bottom:8px}
+    .footer-legal{margin-top:22px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px}
+
+    /* RESPONSIVE */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .posts{grid-template-columns:repeat(2,1fr)}
+      .featured{grid-column:1}
+    }
+    @media (max-width:700px){
+      .nav-links{display:none}
+      .search-input{display:none}
+      .grid{grid-template-columns:1fr}
+      .posts{grid-template-columns:1fr}
+      .container{padding:16px}
+      .logo{width:40px;height:40px}
+      .site-title{font-size:16px}
+      .hero h1{font-size:22px}
+    }
+
+    /* Mobile menu */
+    .mobile-menu{display:none}
+    .hamburger{display:none;background:transparent;border:none;color:inherit}
+    @media(max-width:700px){
+      .hamburger{display:inline-flex}
+      .mobile-menu{display:block;position:fixed;right:14px;top:66px;background:#061224;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+      .mobile-menu a{display:block;padding:8px 10px;color:var(--muted)}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <div class="navbar">
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div class="site-title">SolveSphere</div>
+          <div class="site-sub">Smart Answers, Simple Guides</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="Tech Guides.html">Tech Guides</a>
+        <a href="AI  Tools.html">AI Tools</a>
+        <a href="Gaming and Apps.html">Gaming&apps</a>
+        <a href="Reviews.html">Reviews</a>
+        <a href="blog.html">Blog</a>
+        <a href="about us.html">About</a>
+      </nav>
+
+      <div class="search-wrap">
+        <input class="search-input" type="search" placeholder="Search guides, tools, fixes..." aria-label="Search" />
+        <a class="cta" href="/subscribe/">Subscribe</a>
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile menu (hidden on desktop) -->
+    <div id="mobileMenu" class="mobile-menu" style="display:none">
+        <a href="index.html">Home</a>
+        <a href="Tech Guides.html">Tech Guides</a>
+        <a href="AI  Tools.html">AI Tools</a>
+        <a href="Gaming and Apps.html">Gaming&apps</a>
+        <a href="Reviews.html">Reviews</a>
+        <a href="blog.html">Blog</a>
+        <a href="about us.html">About</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Solve real problems faster. Practical guides, AI tips, and game recommendations—all in one place.</h1>
+        <p>At SolveSphere we publish step-by-step fixes, tested app recommendations, AI tool walkthroughs and health tips you can trust. Read less, solve more.</p>
+        <div class="hero-actions">
+          <a class="cta" href="/tech-guides/">Browse Guides</a>
+          <a style="background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:var(--muted)" href="/ai-tools/">Explore AI Tools</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>500+</strong><span>Guides & Articles</span></div>
+          <div class="stat"><strong>200+</strong><span>Tools Reviewed</span></div>
+          <div class="stat"><strong>Daily</strong><span>Updates & Tips</span></div>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:14px">Featured: <strong>How to Use ChatGPT for Free in 2025</strong> — step-by-step with screenshots and pro prompts.</div>
+      </div>
+
+      <aside>
+        <div class="sidebar">
+          <h4>Latest from SolveSphere</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+            <a href="" style="color:#fff;font-weight:700">How to Use ChatGPT for Free in 2025</a>
+            <small style="color:var(--muted)">Step-by-step guide + pro prompts</small>
+
+            <a href="/fix-phone-not-vibrating.html" style="color:#fff;font-weight:700;margin-top:8px">Fix: Phone Not Vibrating on Silent</a>
+            <small style="color:var(--muted)">Quick troubleshooting for Android & iPhone</small>
+
+            <a href="/best-free-vpns-android-2025.html" style="color:#fff;font-weight:700;margin-top:8px">Top 10 Free VPNs for Android (Tested)</a>
+            <small style="color:var(--muted)">Privacy-tested & recommended</small>
+          </div>
+
+          <div style="margin-top:18px">
+            <h5 style="margin:0 0 8px">Subscribe</h5>
+            <div class="newsletter">
+              <input placeholder="Your email address" aria-label="Email" />
+              <button>Get Weekly Tips</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID: Featured + Categories -->
+    <section class="grid" style="margin-top:18px">
+      <div class="featured">
+        <img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="Featured: ChatGPT guide" loading="lazy" />
+        <h3>Featured Guide: How to Use ChatGPT for Free in 2025</h3>
+        <p class="excerpt" style="color:var(--muted)">Complete walkthrough: official free options, Microsoft/Bing access, alternative apps, privacy tips and pro prompts that get better answers.</p>
+        <div style="margin-top:12px;display:flex;gap:10px">
+          <a class="cta" href="/how-to-use-chatgpt-free-2025.html">Read Guide</a>
+          <a href="/ai-tools/" style="padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">All AI Tools</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <h4>Tech Guides</h4>
+        <p>Step-by-step tutorials, fixes, and app guides for phones & PCs. Easy to follow, tested solutions.</p>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="tag" href="/tech-guides/">Troubleshooting</a>
+          <a class="tag" href="/tech-guides/">Android</a>
+          <a class="tag" href="/tech-guides/">iPhone</a>
+          <a class="tag" href="/tech-guides/">App Tips</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <h4>AI & Tools</h4>
+        <p>Tool reviews, prompts, and practical guides to use AI safely and effectively for everyday tasks.</p>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <a class="tag" href="/ai-tools/">ChatGPT</a>
+          <a class="tag" href="/ai-tools/">Image AI</a>
+          <a class="tag" href="/ai-tools/">Prompt Guides</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- POSTS LIST -->
+   <!-- POSTS LIST -->
+<section style="margin-top:22px">
+  <h3 style="margin:0 0 12px">Recent & Popular</h3>
+  <div class="posts">
+
+    <a class="post" href="ai tools/phone not vibrating on silent.html">
+      <div class="thumb">
+        <img src="ai tools/images/phone not vibrating on silent/1.webp" alt="ChatGPT guide" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+       <h5>Fix: Phone Not Vibrating on Silent</h5>
+      <p>Step-by-step troubleshooting for Android and iPhone, including settings to check.</p>
+      <div class="tag">AI Tools</div>
+    </a>
+
+    <a class="post" href="ai tools/How to Use ChatGPT for Free.html">
+      <div class="thumb">
+        <img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="Fix phone vibration" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+     <h5>How to Use ChatGPT for Free in 2025</h5>
+      <p>Official methods, Microsoft/Bing options, and the best prompt templates to try today.</p>
+      <div class="tag">Tech Guides</div>
+    </a>
+
+    <a class="post" href="blog/7 Daily Habits to Sleep Better.html">
+      <div class="thumb">
+        <img src="blog/images/sleeping post/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>7 Daily Habits to Sleep Better Naturally</h5>
+      <p>Simple, science-backed daily habits you can adopt today to fall asleep faster, sleep deeper, and wake up feeling refreshed.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+ <a class="post" href="Tech Guides/Hidden Settings to Improve Phone Performance.html">
+      <div class="thumb">
+        <img src="Tech Guides/images/hidden phone settings/1.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Hidden Settings to Improve Phone Performance</h5>
+      <p>Unlock hidden Android and iPhone settings that are rarely discussed but can drastically improve your phone’s speed, battery life, and overall performance.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+    <a class="post" href="Gaming and Apps/Best VPN for PUBG  BGMI.html">
+      <div class="thumb">
+        <img src="Gaming and Apps/images/vpn bgmi/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Best VPN for PUBG / BGMI Ping Optimization (2025) — Tested Tips & Setup</h5>
+      <p>If you play PUBG Mobile or BGMI and struggle with high ping, packet loss or lag, a VPN can sometimes help — but only if chosen and configured correctly. This guide walks through how VPNs can affect latency, recommended providers for 2025</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+   <a class="post" href="Gaming and Apps/“Best Emulator Apps for Low-End Devices”.html">
+      <div class="thumb">
+        <img src="Gaming and Apps/images/emulators/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Best Emulator Apps for Low-End Devices (2025)</h5>
+      <p>Running emulators on low-end Android devices can be challenging, but with the right apps and tweaks, you can enjoy retro gaming without lags or crashes.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+  </div>
+</section>
+
+
+    <!-- CATEGORY PREVIEWS -->
+    <section style="margin-top:28px">
+      <h3 style="margin-bottom:12px">Explore Categories</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+        <a class="category-card" href="Tech Guides.html">
+          <h4>Tech Guides</h4>
+          <p style="color:var(--muted)">Solutions for device problems, apps and common errors.</p>
+        </a>
+        <a class="category-card" href="AI  Tools.html">
+          <h4>AI & Tools</h4>
+          <p style="color:var(--muted)">Reviews, prompts and how-tos for the newest AI tools.</p>
+        </a>
+        <a class="category-card" href="Gaming and Apps.html">
+          <h4>Gaming & Apps</h4>
+          <p style="color:var(--muted)">Game lists, optimizations and app recommendations.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="max-width:360px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo">SS</div>
+          <div>
+            <div style="font-weight:700">SolveSphere</div>
+            <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations. Designed for people who want quick, reliable solutions.</p>
+      </div>
+
+      <div style="flex:1;min-width:200px">
+        <h6>Explore</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+          <li><a href="Tech Guides.html">Tech Guides</a></li>
+          <li><a href="AI  Tools.html">AI Tools</a></li>
+          <li><a href="Gaming and Apps.html">Gaming</a></li>
+          <li><a href="Reviews.htmls">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Resources</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+          <li><a href="about us.html">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Contact & Follow</h6>
+        <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k7.com</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="X">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu(){
+      var m = document.getElementById('mobileMenu');
+      if(!m) return;
+      m.style.display = m.style.display === 'block' ? 'none' : 'block';
+    }
+    // Set year in footer
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

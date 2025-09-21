@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Search Console Guide 2025 — SolveSphere</title>
+  <meta name="description" content="Step-by-step guide on using Google Search Console in 2025. Tips, tricks, and setup instructions included.">
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+      --radius:14px; --max-width:1200px; --shadow:0 6px 24px rgba(2,6,23,0.6);
+      font-family:Inter,ui-sans-serif,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px;}
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative;}
+    .brand{display:flex;align-items:center;gap:12px;}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow);}
+    .site-title{font-size:18px;font-weight:700;}
+    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px;}
+    .nav-links{display:flex;gap:18px;align-items:center;}
+    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600;}
+    .nav-links a:hover{background:var(--glass);color:#fff;}
+    .search-wrap{display:flex;align-items:center;gap:10px;position:relative;}
+    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px;}
+    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;}
+    .subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px;}
+    .subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px;}
+    .subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer;}
+    .hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer;}
+    .mobile-menu{display:none;position:fixed;top:66px;right:14px;background:#061224;padding:12px;border-radius:12px;box-shadow:var(--shadow);width:220px;flex-direction:column;gap:8px;z-index:9999;}
+    .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px;}
+    .mobile-menu a:hover{background:var(--glass);color:#fff;}
+
+    .post-content{background:var(--card);padding:28px;border-radius:18px;box-shadow:var(--shadow);margin-top:18px;}
+    h1,h2,h3,h4,h5{margin:0 0 12px;}
+    p{margin:0 0 12px;color:#e6eef6;}
+    ul{margin:0 0 12px;padding-left:20px;}
+    .post-image{width:100%;max-width:400px;height:auto;border-radius:12px;margin:12px 0;display:block;}
+
+    .sidebar{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;margin-top:18px;}
+    footer{margin-top:38px;padding:28px 0;color:var(--muted);}
+    .footer-legal{margin-top:22px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px;}
+    
+    @media(max-width:1000px){.posts{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:700px){
+      .nav-links{display:none;}
+      .search-input{display:none;}
+      .hamburger{display:inline-flex;}
+      .mobile-menu{display:none;}
+      .container{padding:16px;}
+      .site-title{font-size:16px;}
+      h1{font-size:22px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="container">
+  <div class="navbar">
+    <div class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div class="site-title">SolveSphere</div>
+        <div class="site-sub">Smart Answers, Simple Guides</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+      <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
+      <a href="https://www.solvesphere.co.in/blog.html">Blog</a>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+    </nav>
+
+    <div class="search-wrap">
+      <input class="search-input" type="search" placeholder="Search guides, tools, fixes..." aria-label="Search">
+      <!-- Subscribe Button -->
+      <div class="cta" id="subscribeBtn">Subscribe</div>
+      <!-- Subscribe Popup -->
+      <div class="subscribe-popup" id="subscribePopup">
+        <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email address" required>
+          <input type="hidden" name="b_d1cb979a249d7fb9091e24d2a_0d7d886367" tabindex="-1" value="">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="https://www.solvesphere.co.in/index.html">Home</a>
+    <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+    <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+    <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
+    <a href="https://www.solvesphere.co.in/blog.html">Blog</a>
+    <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+    <div class="post-step">
+    <h2>1. Introduction</h2>
+    <p>Google Search Console (GSC) is a free tool by Google for monitoring website performance. It tracks clicks, impressions, ranking positions, and indexing issues. GSC helps identify technical issues, Core Web Vitals, mobile usability problems, and more. Proper use ensures improved search visibility and better user experience. It’s essential for blogs, e-commerce sites, or any web presence to stay competitive.</p>
+<img src="images/GSC/1.png" alt="GSC Dashboard Overview" style="max-width:300px;height:auto;border-radius:12px;margin:12px 0;">
+  </div>
+
+  <div class="post-step">
+    <h2>2. Key Features</h2>
+    <p>Performance Report, URL Inspection, Coverage Report, Sitemaps, Mobile Usability, Core Web Vitals, Manual Actions, and Links Report are core features. Each provides insights to maintain a healthy site, improve SEO, and troubleshoot errors. Regularly reviewing these features maximizes visibility and ranking.</p>
+    <img src="images/GSC/2.png" alt="Key Features of Google Search Console">
+  </div>
+<div class="post-step">
+  <h2>3. Why Use GSC</h2>
+  <p>Google Search Console (GSC) is an essential tool for any website owner aiming to improve SEO performance and visibility. By monitoring your site through GSC, you can track which keywords drive traffic, see how your pages rank in search results, and identify issues that may prevent pages from being properly indexed. Understanding metrics like clicks, impressions, and click-through rate (CTR) helps you evaluate which content resonates with your audience and which pages need optimization.</p>
+  <p>GSC also helps uncover technical issues, such as crawl errors, broken links, or mobile usability problems. Fixing these promptly ensures search engines can fully access and understand your content. Additionally, you can discover which pages are underperforming and adjust meta titles, descriptions, and on-page content accordingly. Using GSC consistently provides actionable insights that support both content strategy and overall website health, making it an indispensable tool for long-term SEO success.</p>
+</div>
+
+<div class="post-step">
+  <h2>4. Step-by-Step Setup</h2>
+  <p>Setting up GSC correctly ensures accurate tracking and reporting. Start by verifying your website ownership. Google offers multiple verification methods: add a DNS TXT record, upload an HTML verification file to your server, or use your Google Analytics or Google Tag Manager account. Once verified, submit your <code>sitemap.xml</code> to help Google discover your pages faster and prioritize crawling. This is especially important for new websites or after publishing a large amount of content.</p>
+  <p>Optionally, connecting GSC with Google Analytics allows for deeper insights into user behavior, engagement, and conversions. After setup, regularly monitor the Coverage Report to identify errors, warnings, or excluded pages. Correcting issues like 404 errors, blocked resources, or redirect chains ensures your site remains fully crawlable. A properly configured GSC account gives you a complete picture of your site’s health, indexing status, and search performance.</p>
+  <img src="images/GSC/3.png" alt="GSC Setup Screenshot" class="post-image">
+</div>
+
+<div class="post-step">
+  <h2>5. Analyzing Data</h2>
+  <p>Once GSC is set up, analyzing its data becomes critical for ongoing SEO improvement. Track clicks, impressions, CTR, and average position for your pages to understand how users find your content. Identify pages with high impressions but low CTR—these may need optimized meta titles and descriptions to attract more clicks. Similarly, pages with low impressions could benefit from better internal linking, content improvements, or targeting additional keywords.</p>
+  <p>The Index Coverage report highlights which pages are successfully indexed and which have issues. Resolve any errors or warnings promptly to maintain healthy visibility. Search Analytics can also reveal trends over time, helping you adapt your content strategy, identify seasonal patterns, and refine targeting. Regularly reviewing GSC data empowers you to make informed decisions, boost organic traffic, and maximize the impact of your SEO efforts.</p>
+</div>
+
+
+  <div class="post-step">
+  <h2>6. Common Issues & Fixes</h2>
+  <p>Even after setting up Google Search Console (GSC) correctly, many website owners encounter issues that prevent proper indexing or reduce visibility in search results. Understanding the common problems and how to fix them is essential to maintain SEO performance and ensure your content reaches the right audience.</p>
+
+  <p><strong>Pages Not Indexed:</strong> One of the most frequent issues is pages not appearing in Google search results. This can happen due to crawl errors, robots.txt restrictions, or the absence of internal links. Use GSC’s <em>URL Inspection</em> tool to check individual pages. If a page hasn’t been indexed, click “Request Indexing” after ensuring it’s live and free of errors. Regularly submitting an updated sitemap also helps Google discover new or updated content faster.</p>
+
+  <p><strong>Server Errors:</strong> HTTP errors like 500 (Internal Server Error) or 503 (Service Unavailable) indicate server problems. These can prevent Googlebot from accessing your site, negatively impacting indexing and ranking. Check your hosting logs or server monitoring tools to identify issues. Common fixes include optimizing server resources, updating software, or contacting your hosting provider for assistance.</p>
+
+  <p><strong>Mobile Usability Issues:</strong> Google prioritizes mobile-friendly websites. GSC reports problems like text too small, clickable elements too close together, or viewport misconfigurations. Addressing these issues often involves adjusting CSS styles, ensuring responsive layouts, and testing your pages across multiple devices and screen sizes.</p>
+
+  <p><strong>Core Web Vitals Warnings:</strong> Google uses Core Web Vitals—metrics like Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS)—to measure page experience. Slow-loading pages, unoptimized images, or unstable layouts can trigger warnings. Fix these by compressing images, using modern file formats, implementing lazy loading, and stabilizing dynamic content to reduce layout shifts.</p>
+
+  <p>Regular monitoring of Google Search Console is crucial. Check performance reports, coverage issues, and enhancements weekly. By identifying and addressing errors proactively, you ensure your website remains healthy, user-friendly, and visible in search results, ultimately supporting long-term SEO success.</p>
+
+  <img src="images/GSC/4.png" alt="Fixing GSC Errors" class="post-image">
+</div>
+
+
+  <div class="post-step">
+    <h2>7. Best Practices</h2>
+    <p>Submit sitemaps after updates, keep URLs clean, fix errors promptly, update old posts, and use GSC data to discover new keywords for content creation.</p>
+  </div>
+
+  <div class="post-step">
+    <h2>8. Pro Tips</h2>
+    <p>Combine GSC with Google Analytics, use regex filters in performance reports, export data for analysis, and implement findings to improve SEO and conversions.</p>
+  </div>
+
+  <div class="post-step">
+    <h2>9. FAQ</h2>
+    <ul>
+      <li><strong>Q:</strong> How often does GSC update data?<br><strong>A:</strong> Usually once per day; some reports update within hours.</li>
+      <li><strong>Q:</strong> Is GSC free?<br><strong>A:</strong> Yes, completely free.</li>
+      <li><strong>Q:</strong> How long to index a new page?<br><strong>A:</strong> Can be instant, but usually within a few hours to days.</li>
+      <li><strong>Q:</strong> Why impressions show but no clicks?<br><strong>A:</strong> Possibly due to low CTR; optimize title and description.</li>
+    </ul>
+  </div>
+
+  <div class="post-step">
+    <h2>10. Conclusion</h2>
+    <p>GSC is a free, essential tool to monitor website performance, fix errors, and optimize SEO. Use it regularly for maximum visibility and growth.</p>
+  </div>
+</article>
+
+
+
+  <aside class="sidebar">
+    <h4>Latest SEO Articles</h4>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+      <a href="https://www.solvesphere.co.in/SEO%20Tools.html" style="color:#fff;font-weight:700">Top SEO Tools 2025</a>
+      <small style="color:var(--muted)">Increase traffic with tested tools</small>
+    </div>
+  </aside>
+</main>
+
+<!-- FOOTER -->
+<footer class="container">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+    <div style="max-width:360px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:700">SolveSphere</div>
+          <div style="color:var(--muted);font-size:12px">Smart Answers, Simple Guides</div>
+        </div>
+      </div>
+      <p style="margin-top:12px;color:var(--muted)">Your go-to source for tech, AI tools, and SEO guides.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul style="list-style:none;padding:0;margin:8px 0;line-height:1.8">
+        <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
+        <li><a href="https://www.solvesphere.co.in/about%20us.html">About Us</a></li>
+        <li><a href="https://www.solvesphere.co.in/contact.html">Contact</a></li>
+        <li><a href="https://www.solvesphere.co.in/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    &copy; 2025 SolveSphere. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// Subscribe Popup
+const subscribeBtn = document.getElementById('subscribeBtn');
+const subscribePopup = document.getElementById('subscribePopup');
+subscribeBtn.addEventListener('click', () => {
+  subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+});
+document.addEventListener('click', function(e){
+  if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
+    subscribePopup.style.display='none';
+  }
+});
+
+// Mobile Menu Toggle
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
+
+</body>
+</html>

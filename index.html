@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SolveSphere — Smart Answers, Simple Guides</title>
+  <meta name="description" content="SolveSphere — step-by-step guides, AI tools, tech fixes, game lists and health tips. Practical solutions and deep guides that actually help." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4P390THX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C4P390THX7');
+  </script>
+</head>
+<body>
+
+<header class="container">
+  <div class="navbar">
+    <div class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div class="site-title">SolveSphere</div>
+        <div class="site-sub">Smart Answers, Simple Guides</div>
+      </div>
+    </div>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="Tech Guides.html">Tech Guides</a>
+      <a href="AI  Tools.html">AI Tools</a>
+      <a href="Gaming and Apps.html">Gaming&apps</a>
+      <a href="Reviews.html">Reviews</a>
+      <a href="blog.html">Blog</a>
+      <a href="about us.html">About</a>
+    </nav>
+
+    <div class="search-wrap">
+      <input class="search-input" type="search" placeholder="Search guides, tools, fixes..." aria-label="Search" />
+      <div class="cta" id="subscribeBtn">Subscribe</div>
+      <div class="subscribe-popup" id="subscribePopup">
+        <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email address" required />
+          <input type="hidden" name="b_d1cb979a249d7fb9091e24d2a_0d7d886367" tabindex="-1" value="">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu" style="display:none">
+    <a href="index.html">Home</a>
+    <a href="Tech Guides.html">Tech Guides</a>
+    <a href="AI  Tools.html">AI Tools</a>
+    <a href="Gaming and Apps.html">Gaming&apps</a>
+    <a href="Reviews.html">Reviews</a>
+    <a href="blog.html">Blog</a>
+    <a href="about us.html">About</a>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Your HERO, POSTS, SIDEBAR, etc. remain unchanged -->
+</main>
+
+<footer class="container">
+  <!-- Your footer remains unchanged -->
+</footer>
+
+
+
+
+
+  <main class="container">
+
+
+    <!-- FEATURED SLIDESHOW -->
+<div class="featured slideshow">
+  <div class="slides">
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="SolveSphere Welcome" />
+      <div class="overlay">
+        <h2>Welcome to SolveSphere</h2>
+        <p>Smart answers, simple guides — step-by-step solutions for tech, AI tools, gaming, and more.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="Tech Guides/images/hidden phone settings/1.webp" alt="Tech Guides" />
+      <div class="overlay">
+        <h2>Tech Guides</h2>
+        <p>Fix common device issues, optimize performance, and master your phone with easy-to-follow tutorials.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="Gaming and Apps/images/needed apps/1.jpg" alt="Gaming & Apps" />
+      <div class="overlay">
+        <h2>Gaming & Apps</h2>
+        <p>Find the best apps, gaming tips, and optimization tricks tested for real performance.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <img src="blog/images/sleeping post/1.jpg" alt="Health & Lifestyle" />
+      <div class="overlay">
+        <h2>Health & Lifestyle</h2>
+        <p>Science-backed habits and guides to improve sleep, focus, and productivity naturally.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Dots -->
+  <div class="dots"></div>
+</div>
+
+
+
+<!-- ✅ SLIDESHOW SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slideshow = document.querySelector('.featured.slideshow');
+  if (!slideshow) return;
+
+  const slides = slideshow.querySelectorAll('.slide');
+  const dotsContainer = slideshow.querySelector('.dots');
+
+  if (!slides.length) return;
+
+  let index = 0;
+  let intervalId = null;
+  const intervalMs = 2500; // ✅ 2.5 second interval
+
+  // Create navigation dots dynamically
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.addEventListener('click', () => showSlide(i, true));
+    dotsContainer.appendChild(btn);
+  });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  function showSlide(i, userTriggered = false) {
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, si) => s.classList.toggle('active', si === index));
+    dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    if (userTriggered) restartInterval();
+  }
+
+  function nextSlide() { showSlide(index + 1); }
+
+  function startInterval() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, intervalMs);
+  }
+
+  function restartInterval() { startInterval(); }
+
+  slideshow.addEventListener('mouseenter', () => clearInterval(intervalId));
+  slideshow.addEventListener('mouseleave', startInterval);
+
+  showSlide(0);
+  startInterval();
+});
+</script>
+
+
+   
+    </section>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Solve real problems faster. Practical guides, AI tips, and game recommendations—all in one place.</h1>
+        <p>At SolveSphere we publish step-by-step fixes, tested app recommendations, AI tool walkthroughs and health tips you can trust. Read less, solve more.</p>
+        <div class="hero-actions">
+          <a class="cta" href="Tech Guides.html">Browse Guides</a>
+          <a style="background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:var(--muted)" href="AI  Tools.html">Explore AI Tools</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>10+</strong><span>Guides & Articles</span></div>
+          <div class="stat"><strong>2+</strong><span>Tools Reviewed</span></div>
+          <div class="stat"><strong>Daily</strong><span>Updates & Tips</span></div>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:14px">Featured: <strong>How to Use ChatGPT for Free in 2025</strong> — step-by-step with screenshots and pro prompts.</div>
+      </div>
+
+      <aside>
+        <div class="sidebar">
+          <h4>Latest from SolveSphere</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+            <a href="" style="color:#fff;font-weight:700">How to Use ChatGPT for Free in 2025</a>
+            <small style="color:var(--muted)">Step-by-step guide + pro prompts</small>
+
+            <a href="/fix-phone-not-vibrating.html" style="color:#fff;font-weight:700;margin-top:8px">Fix: Phone Not Vibrating on Silent</a>
+            <small style="color:var(--muted)">Quick troubleshooting for Android & iPhone</small>
+
+            <a href="/best-free-vpns-android-2025.html" style="color:#fff;font-weight:700;margin-top:8px">Top 10 Free VPNs for Android (Tested)</a>
+            <small style="color:var(--muted)">Privacy-tested & recommended</small>
+          </div>
+
+          <div style="margin-top:18px">
+            <h5 style="margin:0 0 8px">Subscribe</h5>
+            <div class="newsletter">
+              <input placeholder="Your email address" aria-label="Email" />
+              <button>Get Weekly Tips</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID: Featured + Categories -->
+   
+
+    <!-- POSTS LIST -->
+   <!-- POSTS LIST -->
+<section style="margin-top:22px">
+  <h3 style="margin:0 0 12px">Recent & Popular</h3>
+  <div class="posts">
+
+    <a class="post" href="Tech Guides/phone not vibrating on silent.html">
+      <div class="thumb">
+        <img src="Tech Guides/images/phone not vibrating on silent/1.webp" alt="ChatGPT guide" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+       <h5>Fix: Phone Not Vibrating on Silent</h5>
+      <p>Step-by-step troubleshooting for Android and iPhone, including settings to check.</p>
+      <div class="tag">AI Tools</div>
+    </a>
+
+    <a class="post" href="ai tools/How to Use ChatGPT for Free.html">
+      <div class="thumb">
+        <img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="Fix phone vibration" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+     <h5>How to Use ChatGPT for Free in 2025</h5>
+      <p>Official methods, Microsoft/Bing options, and the best prompt templates to try today.</p>
+      <div class="tag">Tech Guides</div>
+    </a>
+
+    <a class="post" href="blog/7 Daily Habits to Sleep Better.html">
+      <div class="thumb">
+        <img src="blog/images/sleeping post/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>7 Daily Habits to Sleep Better Naturally</h5>
+      <p>Simple, science-backed daily habits you can adopt today to fall asleep faster, sleep deeper, and wake up feeling refreshed.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+ <a class="post" href="Tech Guides/Hidden Settings to Improve Phone Performance.html">
+      <div class="thumb">
+        <img src="Tech Guides/images/hidden phone settings/1.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Hidden Settings to Improve Phone Performance</h5>
+      <p>Unlock hidden Android and iPhone settings that are rarely discussed but can drastically improve your phone’s speed, battery life, and overall performance.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+    <a class="post" href="Gaming and Apps/Best VPN for PUBG  BGMI.html">
+      <div class="thumb">
+        <img src="Gaming and Apps/images/vpn bgmi/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Best VPN for PUBG / BGMI Ping Optimization (2025) — Tested Tips & Setup</h5>
+      <p>If you play PUBG Mobile or BGMI and struggle with high ping, packet loss or lag, a VPN can sometimes help — but only if chosen and configured correctly. This guide walks through how VPNs can affect latency, recommended providers for 2025</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+   <a class="post" href="Gaming and Apps/“Best Emulator Apps for Low-End Devices”.html">
+      <div class="thumb">
+        <img src="Gaming and Apps/images/emulators/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+      </div>
+      <h5>Best Emulator Apps for Low-End Devices (2025)</h5>
+      <p>Running emulators on low-end Android devices can be challenging, but with the right apps and tweaks, you can enjoy retro gaming without lags or crashes.</p>
+      <div class="tag">Gaming & Apps</div>
+    </a>
+
+  </div>
+</section>
+
+
+    <!-- CATEGORY PREVIEWS -->
+    <section style="margin-top:28px">
+      <h3 style="margin-bottom:12px">Explore Categories</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+        <a class="category-card" href="Tech Guides.html">
+          <h4>Tech Guides</h4>
+          <p style="color:var(--muted)">Solutions for device problems, apps and common errors.</p>
+        </a>
+        <a class="category-card" href="AI  Tools.html">
+          <h4>AI & Tools</h4>
+          <p style="color:var(--muted)">Reviews, prompts and how-tos for the newest AI tools.</p>
+        </a>
+        <a class="category-card" href="Gaming and Apps.html">
+          <h4>Gaming & Apps</h4>
+          <p style="color:var(--muted)">Game lists, optimizations and app recommendations.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="max-width:360px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo">SS</div>
+          <div>
+            <div style="font-weight:700">SolveSphere</div>
+            <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations. Designed for people who want quick, reliable solutions.</p>
+      </div>
+
+      <div style="flex:1;min-width:200px">
+        <h6>Explore</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+         <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
+       <li><a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a></li>
+       <li><a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a></li>
+       <li><a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a></li>
+       <li><a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a></li>
+      <li> <a href="https://www.solvesphere.co.in/blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Resources</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+          <li><a href="https://www.solvesphere.co.in/about%20us.html">About</a></li>
+          <li><a href="https://www.solvesphere.co.in/contect%20us%20.html">Contact</a></li>
+          <li><a href="https://www.solvesphere.co.in/privacy%20policy.html">Privacy Policy</a></li>
+          <li><a href="https://www.solvesphere.co.in/disclimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Contact & Follow</h6>
+        <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k18@gmail.com</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="X">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
+  </footer>
+<script>
+  // Mobile menu toggle
+  function toggleMobileMenu(){
+    var m = document.getElementById('mobileMenu');
+    if(!m) return;
+    m.style.display = m.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Subscribe toggle
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const subscribePopup = document.getElementById('subscribePopup');
+  subscribeBtn.addEventListener('click', () => {
+    subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+  });
+  document.addEventListener('click', function(event){
+    if (!subscribePopup.contains(event.target) && event.target !== subscribeBtn){
+      subscribePopup.style.display = 'none';
+    }
+  });
+
+  // Set year in footer
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // Slideshow
+  document.addEventListener('DOMContentLoaded', function () {
+    const slideshow = document.querySelector('.featured.slideshow');
+    if (!slideshow) return;
+
+    const slides = slideshow.querySelectorAll('.slide');
+    const dotsContainer = slideshow.querySelector('.dots');
+    if (!slides.length) return;
+
+    let index = 0;
+    let intervalId = null;
+    const intervalMs = 2500;
+
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.addEventListener('click', () => showSlide(i, true));
+      dotsContainer.appendChild(btn);
+    });
+
+    const dots = dotsContainer.querySelectorAll('button');
+    function showSlide(i, userTriggered=false){
+      index=(i+slides.length)%slides.length;
+      slides.forEach((s,si)=>s.classList.toggle('active', si===index));
+      dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+      if(userTriggered) restartInterval();
+    }
+    function nextSlide(){ showSlide(index+1); }
+    function startInterval(){ if(intervalId) clearInterval(intervalId); intervalId=setInterval(nextSlide,intervalMs); }
+    function restartInterval(){ startInterval(); }
+
+    slideshow.addEventListener('mouseenter',()=>clearInterval(intervalId));
+    slideshow.addEventListener('mouseleave',startInterval);
+
+    showSlide(0);
+    startInterval();
+  });
+</script>
+
+</body>
+</html>

@@ -6,162 +6,16 @@
   <title>SolveSphere — Smart Answers, Simple Guides</title>
   <meta name="description" content="SolveSphere — step-by-step guides, AI tools, tech fixes, game lists and health tips. Practical solutions and deep guides that actually help." />
   <link rel="icon" href="/favicon.ico" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C4P390THX7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <link rel="stylesheet" href="style.css">
 
-  gtag('config', 'G-C4P390THX7');
-</script>
-  <style>
-    :root{
-      --bg:#0f1724; /* deep navy */
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#06b6d4; /* cyan */
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --max-width:1200px;
-      --shadow: 0 6px 24px rgba(2,6,23,0.6);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5}
-    a{color:inherit;text-decoration:none}
-
-    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
-
-    /* NAVBAR */
-    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
-    .site-title{font-size:18px;font-weight:700}
-    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
-    .nav-links a:hover{background:var(--glass);color:#fff}
-
-    .search-wrap{display:flex;align-items:center;gap:10px}
-    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
-
-    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700}
-
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;margin:18px 0}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:28px;box-shadow:var(--shadow)}
-    .hero h1{font-size:28px;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0 0 18px}
-    .hero-actions{display:flex;gap:12px}
-
-    .stats{display:flex;gap:12px;margin-top:18px}
-    .stat{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;min-width:120px;text-align:center}
-    .stat strong{display:block;font-size:18px}
-    .stat span{color:var(--muted);font-size:13px}
-
-    /* FEATURED & CATEGORIES */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .featured{grid-column:1 / span 2;background:linear-gradient(90deg,rgba(6,182,212,0.1), rgba(124,58,237,0.06));padding:18px;border-radius:14px}
-    .featured img{width:100%;border-radius:10px;display:block}
-    .featured h3{margin:10px 0}
-
-    .category-card{background:var(--card);padding:14px;border-radius:12px}
-    .category-card h4{margin:0 0 8px}
-    .category-card p{color:var(--muted);margin:0}
-
-    /* LIST of POSTS */
-    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .post{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .post .thumb{height:120px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#0b1220);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-    .post h5{margin:10px 0 6px;font-size:16px}
-    .post p{color:var(--muted);font-size:14px;margin:0}
-    .tag{display:inline-block;margin-top:8px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:12px}
-
-    /* SIDEBAR */
-    .sidebar{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px}
-    .newsletter input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6}
-    .newsletter button{margin-top:8px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#022;cursor:pointer}
-
-    /* FOOTER */
-    footer{margin-top:38px;padding:28px 0;color:var(--muted)}
-    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .footer-grid h6{color:#fff;margin-bottom:8px}
-    .footer-legal{margin-top:22px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px}
-
-    /* RESPONSIVE */
-    @media (max-width:1000px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .posts{grid-template-columns:repeat(2,1fr)}
-      .featured{grid-column:1}
-    }
-    @media (max-width:700px){
-      .nav-links{display:none}
-      .search-input{display:none}
-      .grid{grid-template-columns:1fr}
-      .posts{grid-template-columns:1fr}
-      .container{padding:16px}
-      .logo{width:40px;height:40px}
-      .site-title{font-size:16px}
-      .hero h1{font-size:22px}
-    }
-
-    /* Mobile menu */
-    .mobile-menu{display:none}
-    .hamburger{display:none;background:transparent;border:none;color:inherit}
-    @media(max-width:700px){
-      .hamburger{display:inline-flex}
-      .mobile-menu{display:block;position:fixed;right:14px;top:66px;background:#061224;padding:12px;border-radius:12px;box-shadow:var(--shadow)}
-      .mobile-menu a{display:block;padding:8px 10px;color:var(--muted)}
-    }
- 
-
-  
-    :root{
-      --bg:#0f1724; /* deep navy */
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#06b6d4; /* cyan */
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --max-width:1200px;
-      --shadow: 0 6px 24px rgba(2,6,23,0.6);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5}
-    a{color:inherit;text-decoration:none}
-
-    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
-
-    /* NAVBAR */
-    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
-    .site-title{font-size:18px;font-weight:700}
-    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
-    .nav-links a:hover{background:var(--glass);color:#fff}
-
-    .search-wrap{display:flex;align-items:center;gap:10px;position:relative}
-    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
-
-    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-
-    /* Navbar Subscribe Popup */
-    .subscribe-popup{display:none;position:absolute;top:48px;right:0;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:100;width:260px}
-    .subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
-    .subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
-
-    /* HERO, POSTS, SIDEBAR, FOOTER remain unchanged */
-    /* (Keeping your previous styles as-is) */
-  </style>
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4P390THX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C4P390THX7');
+  </script>
 </head>
 <body>
 
@@ -188,8 +42,6 @@
     <div class="search-wrap">
       <input class="search-input" type="search" placeholder="Search guides, tools, fixes..." aria-label="Search" />
       <div class="cta" id="subscribeBtn">Subscribe</div>
-
-      <!-- Subscribe Popup Form -->
       <div class="subscribe-popup" id="subscribePopup">
         <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
           <input type="email" name="EMAIL" placeholder="Your email address" required />
@@ -197,12 +49,10 @@
           <button type="submit">Subscribe</button>
         </form>
       </div>
-
       <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
     </div>
   </div>
 
-  <!-- Mobile menu (hidden on desktop) -->
   <div id="mobileMenu" class="mobile-menu" style="display:none">
     <a href="index.html">Home</a>
     <a href="Tech Guides.html">Tech Guides</a>
@@ -221,30 +71,6 @@
 <footer class="container">
   <!-- Your footer remains unchanged -->
 </footer>
-
-<script>
-  // Mobile menu toggle
-  function toggleMobileMenu(){
-    var m = document.getElementById('mobileMenu');
-    if(!m) return;
-    m.style.display = m.style.display === 'block' ? 'none' : 'block';
-  }
-
-  // Navbar Subscribe toggle
-  const subscribeBtn = document.getElementById('subscribeBtn');
-  const subscribePopup = document.getElementById('subscribePopup');
-
-  subscribeBtn.addEventListener('click', () => {
-    subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
-  });
-
-  // Click outside to close popup
-  document.addEventListener('click', function(event){
-    if (!subscribePopup.contains(event.target) && event.target !== subscribeBtn){
-      subscribePopup.style.display = 'none';
-    }
-  });
-</script>
 
 
 
@@ -299,106 +125,7 @@
   <div class="dots"></div>
 </div>
 
-<!-- ✅ SLIDESHOW STYLES -->
-<style>
-.featured.slideshow {
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  height: 280px;
-}
 
-.featured.slideshow .slides {
-  position: relative;
-  height: 100%;
-}
-
-.featured.slideshow .slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.featured.slideshow .slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
-.featured.slideshow img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(3px) brightness(0.6);
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.featured.slideshow .overlay {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: #fff;
-  padding: 16px;
-  max-width: 80%;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  margin-bottom: 18px;
-  animation: fadeUp 0.6s ease;
-}
-
-.featured.slideshow .overlay h2 {
-  margin: 0 0 6px;
-  font-size: 20px;
-}
-
-.featured.slideshow .overlay p {
-  margin: 0;
-  font-size: 14px;
-  color: #dbeafe;
-}
-
-@keyframes fadeUp {
-  from { transform: translateY(15px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.dots {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 6px;
-  z-index: 2;
-}
-
-.dots button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-}
-
-.dots button.active {
-  background: var(--accent);
-}
-
-@media (max-width: 700px) {
-  .featured.slideshow {
-    height: 200px;
-  }
-  .featured.slideshow .overlay h2 { font-size: 16px; }
-  .featured.slideshow .overlay p { font-size: 12px; }
-}
-</style>
 
 <!-- ✅ SLIDESHOW SCRIPT -->
 <script>
@@ -631,18 +358,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
   </footer>
+<script>
+  // Mobile menu toggle
+  function toggleMobileMenu(){
+    var m = document.getElementById('mobileMenu');
+    if(!m) return;
+    m.style.display = m.style.display === 'block' ? 'none' : 'block';
+  }
 
-  <script>
-    // Mobile menu toggle
-    function toggleMobileMenu(){
-      var m = document.getElementById('mobileMenu');
-      if(!m) return;
-      m.style.display = m.style.display === 'block' ? 'none' : 'block';
+  // Subscribe toggle
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const subscribePopup = document.getElementById('subscribePopup');
+  subscribeBtn.addEventListener('click', () => {
+    subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+  });
+  document.addEventListener('click', function(event){
+    if (!subscribePopup.contains(event.target) && event.target !== subscribeBtn){
+      subscribePopup.style.display = 'none';
     }
-    // Set year in footer
-    document.getElementById('year').innerText = new Date().getFullYear();
-  </script>
+  });
+
+  // Set year in footer
+  document.getElementById('year').innerText = new Date().getFullYear();
+
+  // Slideshow
+  document.addEventListener('DOMContentLoaded', function () {
+    const slideshow = document.querySelector('.featured.slideshow');
+    if (!slideshow) return;
+
+    const slides = slideshow.querySelectorAll('.slide');
+    const dotsContainer = slideshow.querySelector('.dots');
+    if (!slides.length) return;
+
+    let index = 0;
+    let intervalId = null;
+    const intervalMs = 2500;
+
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.addEventListener('click', () => showSlide(i, true));
+      dotsContainer.appendChild(btn);
+    });
+
+    const dots = dotsContainer.querySelectorAll('button');
+    function showSlide(i, userTriggered=false){
+      index=(i+slides.length)%slides.length;
+      slides.forEach((s,si)=>s.classList.toggle('active', si===index));
+      dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+      if(userTriggered) restartInterval();
+    }
+    function nextSlide(){ showSlide(index+1); }
+    function startInterval(){ if(intervalId) clearInterval(intervalId); intervalId=setInterval(nextSlide,intervalMs); }
+    function restartInterval(){ startInterval(); }
+
+    slideshow.addEventListener('mouseenter',()=>clearInterval(intervalId));
+    slideshow.addEventListener('mouseleave',startInterval);
+
+    showSlide(0);
+    startInterval();
+  });
+</script>
 
 </body>
 </html>
-

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Windows 10 DPI Fix: How to Solve Display Scaling Issues — SolveSphere</title>
+  <meta name="description" content="Learn how to fix DPI scaling issues in Windows 10. Step-by-step solutions for blurry text, apps not scaling correctly, and custom DPI settings for better display.">
+  <link rel="icon" href="/favicon.ico" />
+  
+  <style>
+    .post-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 14px 0;
+}
+@media (max-width: 500px) {
+  .post-image {
+    margin: 10px 0;
+    border-radius: 8px;
+  }
+}
+
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.04); --radius:14px; --max-width:1200px;
+      --shadow: 0 6px 24px rgba(2,6,23,0.6); font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:20px}
+
+    /* NAV */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+    .site-title{font-size:18px;font-weight:700}
+    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{padding:6px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    .nav-links a:hover{background:var(--glass);color:#fff}
+    .search-wrap{display:flex;align-items:center;gap:10px}
+    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:#e6eef6;min-width:140px}
+    .cta{background:var(--accent);color:#002233;padding:10px 12px;border-radius:10px;font-weight:700}
+
+    /* Main layout */
+    main{display:grid;grid-template-columns:1fr 340px;gap:24px;margin-top:18px}
+    .post{background:var(--card);padding:26px;border-radius:14px;box-shadow:var(--shadow)}
+    h1{font-size:28px;margin:0 0 12px}
+    h2{font-size:22px;margin:18px 0 10px}
+    h3{font-size:20px;margin:12px 0 8px}
+    p{margin:0 0 12px;color:#e6eef6}
+    .lede{color:var(--muted);font-size:16px;margin-bottom:14px}
+    .hero-image{width:100%;border-radius:10px;object-fit:cover;display:block;margin:12px 0}
+    .small{font-size:13px;color:var(--muted)}
+    .howto, .pro-tip{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin:12px 0}
+    .pro-tip{background:rgba(6,182,212,0.06);color:#dff8fb}
+    .faq dt{font-weight:700;margin-top:12px}
+    .faq dd{margin:6px 0 12px;color:var(--muted)}
+
+    footer{margin-top:36px;padding:28px 0;color:var(--muted)}
+    .footer-legal{margin-top:18px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px}
+
+    @media (max-width:960px){ main{grid-template-columns:1fr} }
+    @media (max-width:700px){
+      .nav-links{display:none}
+      .search-input{display:none}
+      .container{padding:14px}
+      h1{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =================== NAVBAR HTML =================== -->
+<header class="container">
+  <div class="navbar">
+    <!-- Brand / Logo -->
+    <div class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div class="site-title">SolveSphere</div>
+        <div class="site-sub">Smart Answers, Simple Guides</div>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links" aria-label="Main navigation">
+       <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+      <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+       </nav>
+
+    <!-- Search + Subscribe + Hamburger -->
+      <div class="cta" id="subscribeBtn">Subscribe</div>
+      <div class="subscribe-popup" id="subscribePopup">
+        <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email address" required />
+          <input type="hidden" name="b_d1cb979a249d7fb9091e24d2a_0d7d886367" tabindex="-1" value="">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu" style="display:none">
+     <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+      <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+     </div>
+</header>
+
+<!-- =================== NAVBAR CSS =================== -->
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+  --radius:14px; --shadow: 0 6px 24px rgba(2,6,23,0.6);
+}
+
+body { margin:0; font-family:Inter,sans-serif; background:var(--bg); color:#e6eef6; }
+a{ color:inherit; text-decoration:none; }
+
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+.site-title{font-size:18px;font-weight:700}
+.site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* Desktop links */
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+.nav-links a:hover{background:var(--glass);color:#fff}
+
+/* Search + Subscribe + Hamburger */
+.search-wrap{display:flex;align-items:center;gap:10px;position:relative}
+.search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
+.cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+
+/* Subscribe Popup */
+.subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px}
+.subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
+.subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
+
+/* Hamburger button */
+.hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
+
+/* Mobile Styles */
+@media(max-width:700px){
+  .nav-links{display:none}
+  .search-input{display:none}
+  .hamburger{display:inline-flex}
+
+  .mobile-menu{
+    display:none; position:fixed; top:66px; right:14px; background:#061224; padding:12px; border-radius:12px;
+    box-shadow:var(--shadow); width:220px; flex-direction:column; gap:8px; z-index:9999;
+  }
+  .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px}
+  .mobile-menu a:hover{background:var(--glass);color:#fff}
+}
+</style>
+
+<!-- =================== NAVBAR JS =================== -->
+<script>
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileMenu');
+  if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Subscribe popup toggle
+const subscribeBtn = document.getElementById('subscribeBtn');
+const subscribePopup = document.getElementById('subscribePopup');
+subscribeBtn.addEventListener('click', () => {
+  subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+});
+document.addEventListener('click', function(e){
+  if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
+    subscribePopup.style.display='none';
+  }
+});
+</script>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+  <article class="post-content">
+    <h1>Windows 10 DPI Fix: How to Solve Display Scaling Issues</h1>
+    <p>If your apps look blurry, text seems stretched, or icons are too small or too large, you might be facing a <span class="highlight">DPI scaling issue in Windows 10</span>. This problem often happens on high-resolution displays (like 2K, 4K monitors, or laptops with Retina screens). Luckily, there are several reliable fixes you can apply.</p>
+
+    <!-- Introduction -->
+    <section>
+      <h2>Introduction</h2>
+      <p>DPI, short for <strong>Dots Per Inch</strong>, is essentially the measure of how Windows maps visual content onto your display. On standard monitors, 100% DPI scaling usually works fine. However, when you upgrade to modern displays like 2K, 4K, or high-density laptop screens, the same scaling often leads to issues. Windows tries to adapt, but not every application supports high-DPI rendering properly. As a result, you may see apps with blurry text, tiny icons, or oversized UI elements that make your system feel inconsistent.</p>
+      <p>Microsoft has steadily improved DPI handling in newer versions of Windows, but because so many applications—especially older desktop programs—were not designed with scaling in mind, issues persist. In fact, mixed-monitor setups (for example, pairing a 1080p screen with a 4K one) almost always produce scaling conflicts. This makes working across screens frustrating, as windows appear crisp on one display but blurry on the other.</p>
+      <p>In this guide, we will break down practical solutions that work for everyday users and advanced tweaks for power users. Whether you want a simple fix for blurry fonts or a permanent DPI setting for all apps, the methods below will help. By the end, you’ll know how to make your Windows 10 experience much smoother, with text and images looking clear no matter your monitor setup.</p>
+      <img src="images/Windows 10 DPI Fix/1.png" alt="Windows 10 monitor settings" class="post-image">
+    </section>
+
+    <!-- Fix 1 -->
+    <section>
+      <h2>1. Adjust DPI Settings in Display Options</h2>
+      <p>The first and simplest method to fix scaling issues is by adjusting the global DPI setting through Windows display options. Windows allows you to scale everything—icons, text, and user interface elements—using percentages like 100%, 125%, 150%, or higher. For most modern laptops and external 2K/4K monitors, scaling at 125% or 150% works best because it strikes a balance between readability and screen real estate.</p>
+      <p>To do this, right-click anywhere on your desktop and choose <strong>Display settings</strong>. Under the <em>Scale and Layout</em> section, you’ll see a dropdown for changing the size of text, apps, and other items. Try switching between the presets. After applying the change, some apps may require you to sign out and sign back in before the scaling fully takes effect. This is normal, and it ensures that system processes re-render with the new settings.</p>
+      <p>Adjusting scaling here has the advantage of being system-wide, meaning all apps follow the same rule. However, it also has the disadvantage of forcing apps that don’t support DPI scaling to stretch, which can make them look blurry. If you primarily use modern apps like Microsoft Office, Edge, or apps downloaded from the Microsoft Store, global DPI scaling will usually solve your problems. But if you rely heavily on legacy desktop programs, you may need to use per-app overrides discussed later in this guide.</p>
+      <p>Remember: always test the setting that feels most comfortable. Some users prefer crisper text at lower scaling, while others need larger icons for better readability. Windows gives you flexibility here, so experiment until you find your sweet spot.</p>
+    </section>
+
+    <!-- Fix 2 -->
+    <section>
+      <h2>2. Override High DPI Scaling for Specific Apps</h2>
+      <p>Sometimes, you’ll notice that only certain programs look blurry or improperly scaled, while others display perfectly fine. This is common with older applications that were never designed with high-resolution monitors in mind. In this case, overriding DPI settings for individual applications is often the best approach. Windows lets you do this directly from the compatibility tab of the app’s properties.</p>
+      <p>Here’s how: locate the shortcut or executable file of the problem application, right-click it, and select <strong>Properties</strong>. Go to the <strong>Compatibility</strong> tab and click <strong>Change high DPI settings</strong>. In the popup window, you’ll see an option called <em>Override high DPI scaling behavior</em>. Check this box, and from the dropdown menu, select <strong>Application</strong>. What this does is tell Windows to stop applying its own scaling rules to the app and instead let the program render itself natively.</p>
+      <p>This fix works especially well for programs like Photoshop, older versions of Microsoft Office, or smaller utilities that haven’t been updated for modern displays. The difference can be dramatic: what was once blurry and hard to read suddenly becomes sharp and properly proportioned. The downside is that text or UI elements may appear smaller than you’d like, but at least they will be clear and not distorted.</p>
+      <p>If one app still doesn’t look right after applying this fix, try experimenting with the other options in the dropdown menu, such as <strong>System</strong> or <strong>System (Enhanced)</strong>. These modes allow Windows to handle scaling in different ways, and depending on the application, one may look better than the others. It’s a process of trial and error, but worth it if you rely on the app for daily work.</p>
+      <img src="https://images.unsplash.com/photo-1587202372775-989ce9f59325" alt="Windows compatibility DPI settings" class="post-image">
+    </section>
+
+    <!-- Fix 3 -->
+    <section>
+      <h2>3. Use Custom DPI Scaling</h2>
+      <p>Sometimes, the default DPI scaling options (100%, 125%, 150%, etc.) don’t quite fit your needs. Maybe 125% looks too small but 150% looks too large. That’s where Windows’ custom DPI scaling feature comes in handy. This setting allows you to type in your own percentage, anywhere from 100% to 500%, giving you more granular control over how things appear on your screen.</p>
+      <p>To access this feature, go to <strong>Display settings</strong>, then scroll down and click on <strong>Advanced scaling settings</strong>. Here, you’ll see an option to enter a custom scaling size. For example, typing in 115% might give you the perfect balance between readability and screen space. Once you’ve entered your value, Windows will ask you to sign out and sign back in to apply the changes.</p>
+      <p>Custom scaling is particularly useful if you work with multiple monitors. For instance, a 4K monitor might look best at 150% while your 1080p secondary screen looks fine at 100%. Custom scaling lets you fine-tune the settings so both displays feel comfortable to use side by side. However, be aware that some apps may still not render correctly, even with custom scaling applied. In rare cases, you may see UI glitches or overlapping text.</p>
+      <p>When using custom DPI values, it’s a good idea to start small. Instead of jumping straight to 140% or 160%, try 110% or 115% first and see how it looks. This way, you minimize the risk of introducing problems while still improving usability. It may take some experimentation, but once you find the right number, your system will feel much more natural and easier on the eyes.</p>
+      <div class="tip-box">Tip: Always note down the original setting before experimenting so you can easily revert if needed.</div>
+    </section>
+
+    <!-- Fix 4 -->
+    <section>
+      <h2>4. Use Windows ClearType Text Tuner</h2>
+      <p>One of the most overlooked tools in Windows is the <strong>ClearType Text Tuner</strong>. ClearType is Microsoft’s font-smoothing technology, designed to make text on LCD screens easier to read. If your issue is specifically blurry or jagged fonts rather than mis-scaled apps, running the ClearType wizard can dramatically improve readability.</p>
+      <p>To launch the tool, simply search for <em>Adjust ClearType text</em> in the Start menu. A wizard will open, guiding you through several screens where you choose which sample text looks best to your eyes. It’s a bit like an eye test, but for your monitor. The wizard fine-tunes how Windows renders text, adjusting things like pixel alignment and subpixel rendering. This results in smoother, sharper fonts that look consistent across apps and browsers.</p>
+      <p>ClearType is especially useful on older monitors or budget laptops where default text rendering may appear fuzzy. However, even on high-end displays, running the tuner ensures you’re getting the optimal settings for your particular screen. Many users report that after running ClearType, long reading sessions feel much easier, with less eye strain and fatigue.</p>
+      <p>Keep in mind that ClearType adjustments are system-wide, so all apps will benefit. If your issue is mainly text clarity rather than scaling inconsistencies, this should be one of the first steps you try. It’s quick, safe, and often surprisingly effective.</p>
+    </section>
+
+    <!-- Fix 5 -->
+    <section>
+      <h2>5. Update Graphics Drivers</h2>
+      <p>Another common culprit for DPI scaling issues is outdated or corrupted graphics drivers. Your GPU (graphics processing unit) is responsible for rendering everything you see on the screen, and if its drivers are not optimized for high-DPI displays, scaling artifacts and blurry elements may appear. Fortunately, updating your graphics drivers is straightforward and can resolve many display-related issues.</p>
+      <p>You can update your drivers in multiple ways. The simplest is through <strong>Device Manager</strong>: right-click the Start menu, select Device Manager, expand <em>Display adapters</em>, and right-click your GPU to update the driver. Alternatively, you can visit the official website of your GPU manufacturer—NVIDIA, AMD, or Intel—and download the latest drivers manually. This is often the best choice, as manufacturers release frequent updates with performance improvements and bug fixes.</p>
+      <p>Another option is to let Windows Update handle driver updates automatically. While this method is convenient, it doesn’t always provide the latest version. If you rely on your PC for professional tasks like photo editing or video rendering, it’s worth installing drivers directly from the manufacturer’s site to ensure maximum compatibility with high-resolution monitors.</p>
+      <p>After updating, restart your computer and check if the DPI issues persist. In many cases, a fresh driver installation is all it takes to eliminate blurriness and scaling inconsistencies. Keeping drivers up to date also improves overall system stability, reduces crashes, and enhances performance in applications and games.</p>
+    </section>
+
+    <!-- Fix 6 -->
+    <section>
+      <h2>6. Registry Tweak (Advanced Users)</h2>
+      <p>If you’re comfortable with advanced system tweaks, the registry provides a low-level way to change how Windows handles DPI. This is not for beginners — incorrect registry edits can cause system instability. Always <strong>backup your registry</strong> before making changes (File → Export in Registry Editor) and create a System Restore point so you can recover if something goes wrong.</p>
+      <p>One commonly adjusted key is <code>LogPixels</code>, which directly controls the DPI value Windows uses to scale the desktop. By default, Windows stores DPI as 96 (which equals 100% scaling). Changing this value to 120 sets scaling to 125%, and 144 sets it to 150%. To change it, press <strong>Win + R</strong>, type <code>regedit</code>, and navigate to <code>HKEY_CURRENT_USER\\Control Panel\\Desktop</code>. If <code>LogPixels</code> does not exist, create a new <em>DWORD (32-bit) Value</em> named <code>LogPixels</code> and set it to the decimal value you want (for example, 120). You may also need to set <code>Win8DpiScaling</code> to <code>1</code> to enable custom DPI behavior in certain Windows builds.</p>
+      <p>After modifying these entries, sign out and back in or restart your machine. You’ll notice that system elements immediately adopt the new scaling. This method is useful when the Display Settings UI won’t accept certain custom percentages or when you want the change to apply before apps initialize. Keep in mind some older apps may still look odd because they do not support per-monitor DPI awareness.</p>
+      <p>Advanced tip: For multi-monitor setups with vastly different resolutions, you can combine registry tweaks with per-app overrides to get the best result. For example, force system DPI to a value that improves the secondary monitor while enabling application-controlled scaling for legacy software on the primary monitor. Always test changes incrementally — change one registry value, restart, check, and only then proceed to the next tweak.</p>
+      <div class="tip-box">Warning: Registry changes can have unintended side effects. If your system behaves oddly after a tweak, restore the registry backup or use the System Restore point you created before starting.</div>
+    </section>
+
+    <!-- Checklist Infographic -->
+    <section>
+      <h2>Quick Checklist (Infographic)</h2>
+      <p>Here’s a quick visual checklist you can save or share. It summarizes the steps from this guide in one place so you can quickly try fixes in order.</p>
+      <figure>
+        <img src="/images/dpi-checklist.png" alt="DPI Fix Checklist infographic" class="post-image">
+        <figcaption>Save this checklist for quick troubleshooting: Display Settings → ClearType → Per-App Override → Update Drivers → Registry (advanced).</figcaption>
+      </figure>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <dl class="faq">
+        <dt>Why are some apps blurry in Windows 10?</dt>
+        <dd>Blurriness usually happens because older applications were created for standard-DPI displays and are not DPI-aware. Windows attempts to scale these apps to match your display, which often results in blurry or fuzzy rendering. When an app is not designed to support high-DPI, the system stretches the program’s pixel output to fill more screen space, which causes the loss of sharpness. The best fixes are per-app overrides (telling the app to render at native resolution) or running updated versions of the app that include high-DPI support. If updates aren’t available, try the compatibility settings described earlier.</dd>
+
+        <dt>Is there a one-click fix for DPI issues?</dt>
+        <dd>Unfortunately, there’s no universal one-click cure because DPI problems stem from different causes — system settings, app limitations, driver issues, or mixed-monitor setups. However, a good step-by-step approach (start with Display Settings, run ClearType, then try per-app overrides and driver updates) often resolves most cases quickly. For advanced users, registry tweaks provide deeper control but require careful handling.</dd>
+
+        <dt>Does this problem happen in Windows 11 too?</dt>
+        <dd>Windows 11 improved scaling and added better per-monitor DPI handling, reducing many common issues. That said, legacy apps remain a problem because their rendering code hasn’t changed. If you plan to upgrade, Windows 11 may fix some issues automatically, but you should still be prepared to use the same troubleshooting steps (per-app overrides, ClearType, and driver updates) if a particular app doesn’t behave correctly after upgrading.</dd>
+
+        <dt>Should I use custom DPI scaling?</dt>
+        <dd>Custom DPI scaling is useful when the standard presets don’t match your needs. It gives you more control and can make your workspace more comfortable. Start with small increments (e.g., 110% or 115%) and test how apps behave. If you notice UI glitches or overlapping elements, revert to the previous value. Custom scaling is particularly helpful for users who split work between a high-resolution laptop screen and an external monitor with a different pixel density.</dd>
+
+        <dt>Are third-party DPI-fix tools safe to use?</dt>
+        <dd>Some third-party tools can help manage DPI settings more flexibly than Windows’ built-in controls. However, they carry risks: download only from trusted sources, check community reviews, and ensure the software is actively maintained. Tools that modify low-level display behavior may not be compatible with all drivers or Windows updates, so use them as a last resort and keep backups of your system settings.</dd>
+      </dl>
+    </section>
+
+    <!-- Conclusion -->
+    <section>
+      <h2>Conclusion</h2>
+      <p>DPI scaling issues in Windows 10 are annoying but solvable. Start with the simpler fixes — adjusting scaling in Display Settings and using ClearType — before moving on to per-app compatibility tweaks and driver updates. For advanced users, registry tweaks offer deeper control but should be used cautiously. With these methods, you can get crisp text and properly scaled apps across all your monitors.</p>
+      <p>Keep a habit of updating your system and drivers, and test display changes incrementally so you can quickly revert if something goes wrong. If you need a quick recap, save the checklist image above and use it whenever you face display scaling problems.</p>
+    </section>
+
+  </article>
+</main>
+ <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="max-width:360px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo">SS</div>
+          <div>
+            <div style="font-weight:700">SolveSphere</div>
+            <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations. Designed for people who want quick, reliable solutions.</p>
+      </div>
+
+      <div style="flex:1;min-width:200px">
+        <h6>Explore</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+         <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
+       <li><a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a></li>
+       <li><a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a></li>
+       <li><a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a></li>
+      <li> <a href="https://www.solvesphere.co.in/trading.html">Trading</a></li>
+       <li><a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Resources</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+          <li><a href="https://www.solvesphere.co.in/about%20us.html">About</a></li>
+          <li><a href="https://www.solvesphere.co.in/contect%20us%20.html">Contact</a></li>
+          <li><a href="https://www.solvesphere.co.in/privacy%20policy.html">Privacy Policy</a></li>
+          <li><a href="https://www.solvesphere.co.in/disclimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Contact & Follow</h6>
+        <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k18@gmail.com</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="X">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
+  </footer>
+
+
+</body>
+</html>

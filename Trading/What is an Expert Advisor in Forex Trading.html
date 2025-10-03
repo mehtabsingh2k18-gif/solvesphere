@@ -22,65 +22,34 @@
 
   <!-- Styles (same theme as before, with sidebar layout) -->
   <style>
+    /* Include your existing CSS here (same as previous HTML page) */
     :root{
       --primary-color: #2563eb;
       --secondary-color: #1e293b;
       --light-color: #f9fafb;
       --dark-color: #0f172a;
-      --accent:#06b6d4;
-      --card:#0b1220;
-      --glass: rgba(255,255,255,0.04);
-      --muted:#94a3b8;
-      --max-width:1100px;
-      --shadow:0 8px 30px rgba(2,6,23,0.6);
+      --max-width: 1100px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --bg:#071023; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    body{margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,#071023 0%,#071728 60%);color:#e6eef6;line-height:1.6;-webkit-font-smoothing:antialiased}
+    body {margin:0; background:linear-gradient(180deg,#071023 0%, #071728 60%); color:#e6eef6; line-height:1.6; font-family:Inter,sans-serif;}
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max-width);margin:0 auto;padding:20px}
-
-    /* NAVBAR */
-    .navbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
-    .site-title{font-size:18px;font-weight:700}
-    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
-    .nav-links a:hover{background:var(--glass);color:#fff}
-    .cta{background:var(--accent);color:#022;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-    .hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
-    @media(max-width:700px){.nav-links{display:none}.hamburger{display:inline-flex}}
-
-    /* Content Layout */
-    .content-wrapper{display:flex;gap:24px;align-items:flex-start}
-    .main-content{flex:3}
-    .sidebar{flex:1;background:var(--glass);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
-    .sidebar h3{margin-top:0;font-size:18px;color:#fff}
-    .sidebar p{font-size:14px;color:var(--muted)}
-    .sidebar ul{list-style:none;padding:0;margin-top:10px}
-    .sidebar li{margin:8px 0}
-    .sidebar a{color:var(--accent);font-weight:600}
-
-    /* Post content */
-    h1{font-size:24px;margin-bottom:12px}
-    h2{font-size:20px;margin:16px 0 8px}
-    h3{font-size:18px;margin:12px 0 6px}
-    p{margin-bottom:12px;color:#e6eef6}
-    .post-image{width:100%;max-width:600px;height:auto;border-radius:12px;box-shadow:var(--shadow);margin:15px auto;display:block}
-
-    pre{background:rgba(255,255,255,0.05);padding:12px;border-radius:10px;overflow-x:auto}
-    code{color:#06b6d4;font-family:monospace}
-
-    /* Footer */
-    footer{background:var(--secondary-color);color:#fff;padding:20px;display:flex;justify-content:space-between;flex-wrap:wrap}
-    footer div{margin:10px 0}
+    h1,h2,h3,h4{margin-top:20px}
+    .post-image{width:100%; max-width:600px; height:auto; border-radius:12px; box-shadow:var(--shadow); display:block; margin:15px auto;}
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 10px; text-align: left; }
+    ul { margin:10px 0 15px 20px; }
+    pre{background:rgba(255,255,255,0.05);padding:10px;border-radius:10px;overflow-x:auto;}
   </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
+ <!-- =================== NAVBAR HTML =================== -->
 <header class="container">
   <div class="navbar">
+    <!-- Brand / Logo -->
     <div class="brand">
       <div class="logo">SS</div>
       <div>
@@ -88,28 +57,132 @@
         <div class="site-sub">Smart Answers, Simple Guides</div>
       </div>
     </div>
-    <nav class="nav-links">
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links" aria-label="Main navigation">
       <a href="https://www.solvesphere.co.in/index.html">Home</a>
       <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
       <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
       <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
-      <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
       <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
       <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
-    </nav>
-    <div class="cta" id="subscribeBtn">Subscribe</div>
-    <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+       </nav>
+
+    <!-- Search + Subscribe + Hamburger -->
+          <div class="cta" id="subscribeBtn">Subscribe</div>
+      <div class="subscribe-popup" id="subscribePopup">
+        <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email address" required />
+          <input type="hidden" name="b_d1cb979a249d7fb9091e24d2a_0d7d886367" tabindex="-1" value="">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
   </div>
-  <div id="mobileMenu" style="display:none;position:fixed;top:66px;right:14px;background:#061224;padding:12px;border-radius:12px;box-shadow:var(--shadow);width:220px;flex-direction:column;gap:8px;z-index:9999;">
-    <a href="https://www.solvesphere.co.in/index.html">Home</a>
-    <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
-    <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
-    <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
-     <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu" style="display:none">
+     <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
       <a href="https://www.solvesphere.co.in/Reviews.html">Reviews</a>
-    <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
-  </div>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+     </div>
 </header>
+
+<!-- =================== NAVBAR CSS =================== -->
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+  --radius:14px; --shadow: 0 6px 24px rgba(2,6,23,0.6);
+}
+
+body { margin:0; font-family:Inter,sans-serif; background:var(--bg); color:#e6eef6; }
+a{ color:inherit; text-decoration:none; }
+
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+.site-title{font-size:18px;font-weight:700}
+.site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* Desktop links */
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+.nav-links a:hover{background:var(--glass);color:#fff}
+
+/* Search + Subscribe + Hamburger */
+.search-wrap{display:flex;align-items:center;gap:10px;position:relative}
+.search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
+.cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+
+/* Subscribe Popup */
+.subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px}
+.subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
+.subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
+
+/* Hamburger button */
+.hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
+
+/* Mobile Styles */
+@media(max-width:700px){
+  .nav-links{display:none}
+  .search-input{display:none}
+  .hamburger{display:inline-flex}
+
+  .mobile-menu{
+    display:none; position:fixed; top:66px; right:14px; background:#061224; padding:12px; border-radius:12px;
+    box-shadow:var(--shadow); width:220px; flex-direction:column; gap:8px; z-index:9999;
+  }
+  .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px}
+  .mobile-menu a:hover{background:var(--glass);color:#fff}
+}
+.post-image {
+  width: 100%;        /* Make it fully responsive */
+  max-width: 600px;   /* Limit max size for large screens */
+  height: auto;       /* Maintain aspect ratio */
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 15px 0;
+  display: block;     /* Ensure proper spacing */
+  margin-left: auto;
+  margin-right: auto; /* Center images on all screen sizes */
+}
+
+/* Extra mobile optimization */
+@media (max-width: 768px) {
+  .post-image {
+    max-width: 100%;  /* Full width on small screens */
+  }
+}
+
+</style>
+
+<!-- =================== NAVBAR JS =================== -->
+<script>
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileMenu');
+  if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Subscribe popup toggle
+const subscribeBtn = document.getElementById('subscribeBtn');
+const subscribePopup = document.getElementById('subscribePopup');
+subscribeBtn.addEventListener('click', () => {
+  subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+});
+document.addEventListener('click', function(e){
+  if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
+    subscribePopup.style.display='none';
+  }
+});
+
+</script>
+
 
 <!-- MAIN CONTENT + SIDEBAR -->
 <div class="container content-wrapper">
@@ -246,3 +319,15 @@ void OnTick() {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

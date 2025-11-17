@@ -324,3 +324,40 @@ html, body {
     height: auto;
   }
 }
+/* GLOBAL RESPONSIVE CONTAINER */
+.container {
+    width: 100%;
+    max-width: 1200px;        /* Controls left-right max width */
+    margin: 0 auto;           /* Center the entire site */
+    padding: 0 16px;          /* Prevent content touching the edges */
+    box-sizing: border-box;
+}
+
+/* Make text scale better on mobile */
+body {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 18px; }
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Make grids responsive */
+.category-grid,
+.category-section .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}

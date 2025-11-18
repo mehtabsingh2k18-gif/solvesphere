@@ -82,199 +82,138 @@
 
   <main class="container">
 
-
-    <!-- FEATURED SLIDESHOW -->
+<!-- FEATURED SLIDESHOW -->
 <div class="featured slideshow">
   <div class="slides">
 
-    <!-- Slide 1 -->
     <div class="slide active">
-      <img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="SolveSphere Welcome" />
+      <img loading="eager" decoding="async" src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="SolveSphere Welcome">
       <div class="overlay">
         <h2>Welcome to SolveSphere</h2>
         <p>Smart answers, simple guides — step-by-step solutions for tech, AI tools, gaming, and more.</p>
       </div>
     </div>
 
-    <!-- Slide 2 -->
     <div class="slide">
-      <img src="Tech Guides/images/hidden phone settings/1.webp" alt="Tech Guides" />
+      <img loading="lazy" decoding="async" src="Tech Guides/images/hidden phone settings/1.webp" alt="Tech Guides">
       <div class="overlay">
         <h2>Tech Guides</h2>
-        <p>Fix common device issues, optimize performance, and master your phone with easy-to-follow tutorials.</p>
+        <p>Fix common device issues, optimize performance.</p>
       </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="slide">
-      <img src="Gaming and Apps/images/needed apps/1.jpg" alt="Gaming & Apps" />
+      <img loading="lazy" decoding="async" src="Gaming and Apps/images/needed apps/1.jpg" alt="Gaming & Apps">
       <div class="overlay">
         <h2>Gaming & Apps</h2>
-        <p>Find the best apps, gaming tips, and optimization tricks tested for real performance.</p>
+        <p>Find the best apps and gaming tips.</p>
       </div>
     </div>
 
-    <!-- Slide 4 -->
     <div class="slide">
-      <img src="Trading/images/mql4 introduction/slide.PNG" alt="Tradnig Guide" />
+      <img loading="lazy" decoding="async" src="Trading/images/mql4 introduction/slide.PNG" alt="Trading Guide">
       <div class="overlay">
-        <h2>Tradnig Guide</h2>
-        <p>Science-backed habits and guides to improve sleep, focus, and productivity naturally.</p>
+        <h2>Trading Guide</h2>
+        <p>Learn trading safely with clean beginner guides.</p>
       </div>
     </div>
 
   </div>
 
-  <!-- Navigation Dots -->
   <div class="dots"></div>
 </div>
-
-
-
-<!-- ✅ SLIDESHOW SCRIPT -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const slideshow = document.querySelector('.featured.slideshow');
-  if (!slideshow) return;
-
-  const slides = slideshow.querySelectorAll('.slide');
-  const dotsContainer = slideshow.querySelector('.dots');
-
-  if (!slides.length) return;
-
-  let index = 0;
-  let intervalId = null;
-  const intervalMs = 2500; // ✅ 2.5 second interval
-
-  // Create navigation dots dynamically
-  slides.forEach((_, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.addEventListener('click', () => showSlide(i, true));
-    dotsContainer.appendChild(btn);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function showSlide(i, userTriggered = false) {
-    index = (i + slides.length) % slides.length;
-    slides.forEach((s, si) => s.classList.toggle('active', si === index));
-    dots.forEach((d, di) => d.classList.toggle('active', di === index));
-    if (userTriggered) restartInterval();
+ 
+  <!-- CONTINUED: HERO + SIDEBAR -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SolveSphere",
+    "url": "https://www.solvesphere.co.in",
+    "logo": "https://www.solvesphere.co.in/logo.png"
   }
+  </script>
 
-  function nextSlide() { showSlide(index + 1); }
-
-  function startInterval() {
-    if (intervalId) clearInterval(intervalId);
-    intervalId = setInterval(nextSlide, intervalMs);
-  }
-
-  function restartInterval() { startInterval(); }
-
-  slideshow.addEventListener('mouseenter', () => clearInterval(intervalId));
-  slideshow.addEventListener('mouseleave', startInterval);
-
-  showSlide(0);
-  startInterval();
-});
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "SolveSphere",
-  "url": "https://www.solvesphere.co.in",
-  "logo": "https://www.solvesphere.co.in/logo.png"
-}
-</script>
-
-
-
-   
-    </section>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-card">
-        <h1>Solve real problems faster. Practical guides, AI tips, and game recommendations—all in one place.</h1>
-        <p>At SolveSphere we publish step-by-step fixes, tested app recommendations, AI tool walkthroughs and health tips you can trust. Read less, solve more.</p>
-        <div class="hero-actions">
-          <a class="cta" href="Tech Guides.html">Browse Guides</a>
-          <a style="background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:var(--muted)" href="AI  Tools.html">Explore AI Tools</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat"><strong>10+</strong><span>Guides & Articles</span></div>
-          <div class="stat"><strong>2+</strong><span>Tools Reviewed</span></div>
-          <div class="stat"><strong>Daily</strong><span>Updates & Tips</span></div>
-        </div>
-
-        <div style="margin-top:18px;color:var(--muted);font-size:14px">Featured: <strong>How to Use ChatGPT for Free in 2025</strong> — step-by-step with screenshots and pro prompts.</div>
+  <section class="hero">
+    <div class="hero-card">
+      <h1>Solve real problems faster. Practical guides, AI tips, and game recommendations—all in one place.</h1>
+      <p>At SolveSphere we publish step-by-step fixes, tested app recommendations, AI tool walkthroughs and health tips you can trust. Read less, solve more.</p>
+      <div class="hero-actions">
+        <a class="cta" href="Tech Guides.html">Browse Guides</a>
+        <a class="cta alt" href="AI  Tools.html">Explore AI Tools</a>
       </div>
 
-      <aside>
-        <div class="sidebar">
-          <h4>Latest from SolveSphere</h4>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
-            <a href="" style="color:#fff;font-weight:700">How to Use ChatGPT for Free in 2025</a>
-            <small style="color:var(--muted)">Step-by-step guide + pro prompts</small>
+      <div class="stats">
+        <div class="stat"><strong>10+</strong><span>Guides & Articles</span></div>
+        <div class="stat"><strong>2+</strong><span>Tools Reviewed</span></div>
+        <div class="stat"><strong>Daily</strong><span>Updates & Tips</span></div>
+      </div>
 
-            <a href="/fix-phone-not-vibrating.html" style="color:#fff;font-weight:700;margin-top:8px">Fix: Phone Not Vibrating on Silent</a>
-            <small style="color:var(--muted)">Quick troubleshooting for Android & iPhone</small>
+      <div class="featured-note">Featured: <strong>How to Use ChatGPT for Free in 2025</strong> — step-by-step with screenshots and pro prompts.</div>
+    </div>
 
-            <a href="/best-free-vpns-android-2025.html" style="color:#fff;font-weight:700;margin-top:8px">Top 10 Free VPNs for Android (Tested)</a>
-            <small style="color:var(--muted)">Privacy-tested & recommended</small>
-          </div>
+    <aside>
+      <div class="sidebar">
+        <h4>Latest from SolveSphere</h4>
+        <div class="latest-list">
+          <a href="" class="latest-title">How to Use ChatGPT for Free in 2025</a>
+          <small class="latest-sub">Step-by-step guide + pro prompts</small>
 
-          <div style="margin-top:18px">
-            <h5 style="margin:0 0 8px">Subscribe</h5>
-            <div class="newsletter">
-              <input placeholder="Your email address" aria-label="Email" />
-              <button>Get Weekly Tips</button>
-            </div>
+          <a href="/fix-phone-not-vibrating.html" class="latest-title">Fix: Phone Not Vibrating on Silent</a>
+          <small class="latest-sub">Quick troubleshooting for Android & iPhone</small>
+
+          <a href="/best-free-vpns-android-2025.html" class="latest-title">Top 10 Free VPNs for Android (Tested)</a>
+          <small class="latest-sub">Privacy-tested & recommended</small>
+        </div>
+
+        <div class="subscribe-box">
+          <h5>Subscribe</h5>
+          <div class="newsletter">
+            <input placeholder="Your email address" aria-label="Email">
+            <button>Get Weekly Tips</button>
           </div>
         </div>
-      </aside>
-    </section>
+      </div>
+    </aside>
+  </section>
 
-    <!-- MAIN GRID: Featured + Categories -->
-   
-
-    <!-- POSTS LIST -->
-   <!-- POSTS LIST -->
-<main class="container">
-
-
-
-  <!-- 🎮 GAMING SECTION -->
+  <!-- POSTS LIST -->
+  <!-- GAMING SECTION -->
   <section class="category-section">
     <div class="section-header">
       <h2>🎮 Gaming & Apps</h2>
       <a href="Gaming and Apps.html" class="view-all">View All</a>
     </div>
     <div class="category-grid">
+      <a class="post" href="Gaming and Apps/Best Farming Games for Android (2025).html">
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Gaming and Apps/images/farming games/3.webp" alt="Spider-Man games thumbnail" width="400" height="225">
+        </div>
+        <h5>Best Farming Games for Android (2025)</h5>
+        <p>Farming games on Android range from cozy pixel RPGs to heavy simulation experiences with tractors and field management. This guide lists the best picks for every playstyle — offline, low-MB, multiplayer, idle and realistic simulators — and includes tips so you can choose the perfect farm.</p>
+      </a>
+
+      
       <a class="post" href="Gaming and Apps/Best Survival Games for Android.html">
-        <div class="thumb"><img src="Gaming and Apps/images/survival games/thmb.jpg" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Gaming and Apps/images/survival games/thmb.jpg" alt="Best Survival Games thumbnail" width="400" height="225">
+        </div>
         <h5>Best Survival Games for Android</h5>
-        <p>Offline and online Android survival games with exploration, crafting, and action.</p>
+        <p>Looking for the best survival games for Android? Whether you want to play offline in peace or go online with friends, these mobile games deliver thrilling survival challenges, exploration, crafting, and base-building. Below, we’ve separated the top offline and online survival games for Android you can play today.</p>
       </a>
 
-      <a class="post" href="Gaming and Apps/Best Spider-Man Games for PC.html">
-        <div class="thumb"><img src="Gaming and Apps/images/spider man games/5.jpg" alt=""></div>
-        <h5>Best Spider-Man Games for PC Under 10GB</h5>
-        <p>Low-size Spider-Man games for PC in 2025. Works on mid-range setups.</p>
-      </a>
-
-      <a class="post" href="Gaming and Apps/needed apps.html">
-        <div class="thumb"><img src="Gaming and Apps/images/needed apps/1.jpg" alt=""></div>
+      
+      <a class="post" href="Gaming and Apps/Best Android Apps You Didn’t Know You Needed.html">
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Gaming and Apps/images/needed apps/1.jpg" alt="Needed apps thumbnail" width="400" height="225">
+        </div>
         <h5>Top 10 Must-Have Android Apps (2025)</h5>
-        <p>Powerful tools every Android user should install this year for productivity.</p>
+        <p>PYour Android phone is capable of much more than you think. While most people stick to Instagram, WhatsApp, and YouTube, there’s an entire universe of lesser-known but powerful apps that can boost your productivity, make life easier, and even help you stay healthier.</p>
       </a>
     </div>
   </section>
 
-
-  <!-- 💹 TRADING SECTION -->
+  <!-- TRADING SECTION -->
   <section class="category-section">
     <div class="section-header">
       <h2>💹 Trading Guides</h2>
@@ -282,27 +221,32 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="category-grid">
       <a class="post" href="Trading/Custom Algo Trading Bot Development .html">
-        <div class="thumb"><img src="Trading/images/custom service/1.PNG" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Trading/images/custom service/1.PNG" alt="Custom trading service" width="400" height="225">
+        </div>
         <h5>How to Build a Custom Trading Bot in MT4</h5>
-        <p>Turn your manual trading logic into a fully automated MT4 Expert Advisor.</p>
+        <p>Step-by-step guide to convert your manual trading ideas into a working MT4 trading bot (Expert Advisor). Includes planning your strategy, writing MQL4 code, testing with backtesting, running on demo/live accounts, and free setup assistance from SolveSphere.</p>
       </a>
 
       <a class="post" href="Trading/Backtesting vs Live Trading How to Test Your Algo Safely.html">
-        <div class="thumb"><img src="Trading/images/backtesting/1.png" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Trading/images/backtesting/1.png" alt="Backtesting" width="400" height="225">
+        </div>
         <h5>Backtesting vs Live Trading</h5>
-        <p>Learn how to safely test and validate your trading algorithm performance.</p>
+        <p>Before risking real money, every trader should test their trading bot (EA) using reliable backtesting strategies and live testing methods. Whether you’re using MQL4 or MQL5, proper testing helps ensure your algorithm behaves as expected under real market conditions.</p>
       </a>
 
       <a class="post" href="Trading/What is an Expert Advisor in Forex Trading.html">
-        <div class="thumb"><img src="Trading/images/what is an ea/thmb.PNG" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Trading/images/what is an ea/thmb.PNG" alt="What is an EA" width="400" height="225">
+        </div>
         <h5>What is an Expert Advisor (EA)?</h5>
-        <p>Complete beginner’s guide to automated forex trading using MT4/MQL4.</p>
+        <p>Expert Advisors (EAs) are one of the most powerful features of the MetaTrader 4 (MT4) platform. An EA is an automated trading program written in the MQL4 language that can monitor the market, generate trading signals, and execute buy or sell orders without manual intervention.</p>
       </a>
     </div>
   </section>
 
-
-  <!-- ⚙️ TECH GUIDES SECTION -->
+  <!-- TECH GUIDES -->
   <section class="category-section">
     <div class="section-header">
       <h2>⚙️ Tech Guides</h2>
@@ -310,57 +254,63 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="category-grid">
       <a class="post" href="Tech Guides/Windows 10 DPI Fix.html">
-        <div class="thumb"><img src="Tech Guides/images/Windows 10 DPI Fix/1.png" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Tech Guides/images/Windows 10 DPI Fix/1.png" alt="Windows 10 DPI Fix" width="400" height="225">
+        </div>
         <h5>Windows 10 DPI Fix</h5>
-        <p>Fix blurry apps and display scaling issues in Windows 10 step-by-step.</p>
+        <p>If your apps look blurry, text seems stretched, or icons are too small or too large, you might be facing a DPI scaling issue in Windows 10. This problem often happens on high-resolution displays (like 2K, 4K monitors, or laptops with Retina screens). Luckily, there are several reliable fixes you can apply.</p>
       </a>
 
-      <a class="post" href="Tech Guides/hidden phone settings.html">
-        <div class="thumb"><img src="Tech Guides/images/hidden phone settings/1.webp" alt=""></div>
+      <a class="post" href="Tech Guides/Hidden Settings to Improve Phone Performance.html">
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Tech Guides/images/hidden phone settings/1.webp" alt="Hidden Android Settings" width="400" height="225">
+        </div>
         <h5>Hidden Android Settings You Should Enable</h5>
-        <p>Unlock secret Android features to improve performance and battery life.</p>
+        <p>Unlock hidden Android and iPhone settings that are rarely discussed but can drastically improve your phone’s speed, battery life, and overall performance. From developer options to system tweaks, this guide covers everything.</p>
       </a>
 
-      <a class="post" href="Tech Guides/Fix Slow Charging.html">
-        <div class="thumb"><img src="Tech Guides/images/phone charging problem/1.jpg" alt=""></div>
+      <a class="post" href="Tech Guides/phone not vibrating on silent.html">
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="Tech Guides/images/phone charging problem/1.jpg" alt="Fix Slow Charging" width="400" height="225">
+        </div>
         <h5>Fix: Phone Not Vibrating on Silent</h5>
-        <p>Quick fix for Android and iPhone vibration issues.</p>
+        <p>If your phone is not vibrating when it should, it can be frustrating. This guide covers both Android and iPhone with easy-to-follow steps to fix the vibration issue.</p>
       </a>
     </div>
   </section>
 
-
-  <!-- 🤖 AI TOOLS SECTION -->
+  <!-- AI TOOLS -->
   <section class="category-section">
     <div class="section-header">
       <h2>🤖 AI Tools</h2>
       <a href="AI  Tools.html" class="view-all">View All</a>
     </div>
     <div class="category-grid">
-      <a class="post" href="AI  Tools/How to Use ChatGPT for Free.html">
-        <div class="thumb"><img src="ai tools/images/How to Use ChatGPT for Free/1.png" alt=""></div>
+      <a class="post" href="ai tools/How to Use ChatGPT for Free.html">
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="ai tools/images/How to Use ChatGPT for Free/1.png" alt="How to Use ChatGPT for Free" width="400" height="225">
+        </div>
         <h5>How to Use ChatGPT for Free</h5>
-        <p>Step-by-step guide to use ChatGPT without a paid plan (2025 update).</p>
+        <p>ChatGPT is one of the most powerful AI tools available for free. Whether you want to write articles, brainstorm ideas, or just chat, this guide will help you get started without spending a dime.</p>
       </a>
 
       <a class="post" href="ai tools/AI Video Generators.html">
-        <div class="thumb"><img src="ai tools/images/ai vedio generator/1.jpg" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="ai tools/images/ai vedio generator/1.jpg" alt="AI Video Generators" width="400" height="225">
+        </div>
         <h5>Top Free AI Logo Makers (2025)</h5>
-        <p>Generate pro-quality logos instantly using free AI tools.</p>
+        <p>AI-driven video makers are transforming content production. This guide compares free and paid AI video generators in 2025, highlights strengths and limits, shows step-by-step creation, suggests workflows, and provides troubleshooting and FAQ so you can pick the right tool for YouTube, social, or business videos.</p>
       </a>
 
       <a class="post" href="ai tools/AI Tools for Social Media Growth.html">
-        <div class="thumb"><img src="ai tools/images/social meida growth/tree-200795_1280.webp" alt=""></div>
+        <div class="thumb">
+          <img loading="lazy" decoding="async" src="ai tools/images/social meida growth/tree-200795_1280.webp" alt="AI Tools for Social Media Growth" width="400" height="225">
+        </div>
         <h5>Best AI Resume Builders (Free)</h5>
-        <p>Create ATS-friendly resumes using AI tools in minutes.</p>
+        <p>AI tools can speed up content production, discover trends, and give actionable posting guidance. This long-form guide covers the best AI tools for social growth (scheduling, caption & hashtag generators, visual AI, analytics), how to choose and test them, an example workflow, a short case study, common mistakes to avoid, and a detailed FAQ.</p>
       </a>
     </div>
   </section>
-
-
-
-</main>
-
 
     <!-- CATEGORY PREVIEWS -->
     <section style="margin-top:28px">
@@ -494,3 +444,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
+
+

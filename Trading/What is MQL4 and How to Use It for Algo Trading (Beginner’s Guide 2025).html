@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is MQL4 and How to Use It for Algo Trading? (Beginner’s Guide 2025) — SolveSphere</title>
+  <meta name="description" content="Learn what MQL4 is, how to use it for automated trading in MT4, and start building trading bots with our beginner-friendly guide for 2025." />
+  <meta name="keywords" content="MQL4 tutorial for beginners 2025, MQL4 EA example, MT4 bot guide, Algo trading beginners, solvesphere" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What is MQL4 and How to Use It for Algo Trading?" />
+  <meta property="og:description" content="Step-by-step guide for beginners to understand MQL4 and build their first trading bot in MT4." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolveSphere" />
+  <meta property="og:image" content="images/mql4/cover.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is MQL4 and How to Use It for Algo Trading?" />
+  <meta name="twitter:description" content="Step-by-step beginner guide for MQL4 and automated trading bots on MT4." />
+  <meta name="twitter:image" content="images/mql4/cover.jpg" />
+
+  <!-- Styles -->
+   <style>
+    /* Include your existing CSS here (same as previous HTML page) */
+    :root{
+      --primary-color: #2563eb;
+      --secondary-color: #1e293b;
+      --light-color: #f9fafb;
+      --dark-color: #0f172a;
+      --max-width: 1100px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --bg:#071023; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body {margin:0; background:linear-gradient(180deg,#071023 0%, #071728 60%); color:#e6eef6; line-height:1.6; font-family:Inter,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:20px}
+    h1,h2,h3,h4{margin-top:20px}
+    .post-image{width:100%; max-width:600px; height:auto; border-radius:12px; box-shadow:var(--shadow); display:block; margin:15px auto;}
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 10px; text-align: left; }
+    ul { margin:10px 0 15px 20px; }
+    pre{background:rgba(255,255,255,0.05);padding:10px;border-radius:10px;overflow-x:auto;}
+  </style>
+</head>
+<body>
+ <!-- =================== NAVBAR HTML =================== -->
+<header class="container">
+  <div class="navbar">
+    <!-- Brand / Logo -->
+    <div class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div class="site-title">SolveSphere</div>
+        <div class="site-sub">Smart Answers, Simple Guides</div>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+       </nav>
+
+    <!-- Search + Subscribe + Hamburger -->
+          <div class="cta" id="subscribeBtn">Subscribe</div>
+      <div class="subscribe-popup" id="subscribePopup">
+        <form action="https://solvesphere.us1.list-manage.com/subscribe/post?u=d1cb979a249d7fb9091e24d2a&amp;id=0d7d886367" method="post" target="_blank">
+          <input type="email" name="EMAIL" placeholder="Your email address" required />
+          <input type="hidden" name="b_d1cb979a249d7fb9091e24d2a_0d7d886367" tabindex="-1" value="">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu" style="display:none">
+     <a href="https://www.solvesphere.co.in/index.html">Home</a>
+      <a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a>
+      <a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a>
+      <a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a>
+    <a href="https://www.solvesphere.co.in/trading.html">Trading</a>
+      <a href="https://www.solvesphere.co.in/about%20us.html">About</a>
+     </div>
+</header>
+
+<!-- =================== NAVBAR CSS =================== -->
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+  --radius:14px; --shadow: 0 6px 24px rgba(2,6,23,0.6);
+}
+
+body { margin:0; font-family:Inter,sans-serif; background:var(--bg); color:#e6eef6; }
+a{ color:inherit; text-decoration:none; }
+
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+.site-title{font-size:18px;font-weight:700}
+.site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* Desktop links */
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+.nav-links a:hover{background:var(--glass);color:#fff}
+
+/* Search + Subscribe + Hamburger */
+.search-wrap{display:flex;align-items:center;gap:10px;position:relative}
+.search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
+.cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+
+/* Subscribe Popup */
+.subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px}
+.subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
+.subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
+
+/* Hamburger button */
+.hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
+
+/* Mobile Styles */
+@media(max-width:700px){
+  .nav-links{display:none}
+  .search-input{display:none}
+  .hamburger{display:inline-flex}
+
+  .mobile-menu{
+    display:none; position:fixed; top:66px; right:14px; background:#061224; padding:12px; border-radius:12px;
+    box-shadow:var(--shadow); width:220px; flex-direction:column; gap:8px; z-index:9999;
+  }
+  .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px}
+  .mobile-menu a:hover{background:var(--glass);color:#fff}
+}
+.post-image {
+  width: 100%;        /* Make it fully responsive */
+  max-width: 600px;   /* Limit max size for large screens */
+  height: auto;       /* Maintain aspect ratio */
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 15px 0;
+  display: block;     /* Ensure proper spacing */
+  margin-left: auto;
+  margin-right: auto; /* Center images on all screen sizes */
+}
+
+/* Extra mobile optimization */
+@media (max-width: 768px) {
+  .post-image {
+    max-width: 100%;  /* Full width on small screens */
+  }
+}
+
+</style>
+
+<!-- =================== NAVBAR JS =================== -->
+<script>
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobileMenu');
+  if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Subscribe popup toggle
+const subscribeBtn = document.getElementById('subscribeBtn');
+const subscribePopup = document.getElementById('subscribePopup');
+subscribeBtn.addEventListener('click', () => {
+  subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
+});
+document.addEventListener('click', function(e){
+  if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
+    subscribePopup.style.display='none';
+  }
+});
+
+</script>
+
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <h1>What is MQL4 and How to Use It for Algo Trading? (Beginner’s Guide 2025)</h1>
+  <img src="images/mql4 introduction/1.PNG" alt="MQL4 Tutorial Beginner" class="post-image">
+
+  <p>MQL4 (MetaQuotes Language 4) is the programming language behind MetaTrader 4 (MT4), one of the most popular platforms for forex and CFD trading. It allows traders to create <strong>Expert Advisors (EAs)</strong>, custom indicators, and scripts to automate trading strategies. By learning MQL4, you can execute trades automatically, monitor market conditions, and even test strategies on historical data. Whether you are new to forex or already an experienced trader, understanding MQL4 can give you an edge in algorithmic trading.</p>
+
+  <h2>Why Learn MQL4?</h2>
+  <p>There are several compelling reasons to learn MQL4:</p>
+  <ul>
+    <li><strong>Automation:</strong> Execute trades automatically according to your strategy without manual intervention.</li>
+    <li><strong>Custom Indicators:</strong> Create indicators that are not available on MT4 by default.</li>
+    <li><strong>Backtesting:</strong> Test strategies on historical data to evaluate performance before risking real money.</li>
+    <li><strong>Scalability:</strong> Run multiple strategies simultaneously and manage them efficiently.</li>
+    <li><strong>Competitive Advantage:</strong> Traders who automate their strategies often outperform those who trade manually.</li>
+  </ul>
+
+  <h2>Understanding Expert Advisors (EAs)</h2>
+  <img src="images/mql4 introduction/2.PNG" alt="Example EA in MT4" class="post-image">
+  <p>An Expert Advisor (EA) is a program written in MQL4 that automates trading. It can analyze price data, generate trading signals, and execute orders automatically. Here’s what you need to know:</p>
+
+  <h3>Key Features of EAs:</h3>
+  <ul>
+    <li>Automated execution of buy/sell orders</li>
+    <li>Customizable strategies with parameters</li>
+    <li>Ability to use multiple technical indicators</li>
+    <li>Risk management automation including stop loss and take profit</li>
+  </ul>
+
+  <h3>Sample EA Workflow:</h3>
+  <ol>
+    <li>Analyze market conditions using indicators.</li>
+    <li>Generate a buy or sell signal based on the strategy.</li>
+    <li>Execute the trade automatically.</li>
+    <li>Monitor trade and apply stop loss/take profit rules.</li>
+    <li>Repeat on every new tick.</li>
+  </ol>
+
+  <h2>Setting Up MT4 for MQL4</h2>
+  <p>Before coding in MQL4, you need to set up MetaTrader 4 correctly:</p>
+  <ul>
+    <li><strong>Download MT4:</strong> Choose a reliable broker and download the MT4 platform.</li>
+    <li><strong>Install MT4:</strong> Follow the installation guide and login to your demo or live account.</li>
+    <li><strong>Open MetaEditor:</strong> MetaEditor is the environment for writing MQL4 code. You can create EAs, scripts, and indicators here.</li>
+    <li><strong>Create Your First EA:</strong> Use the “New” option in MetaEditor and select “Expert Advisor (template)” to start coding.</li>
+  </ul>
+
+  <h3>Basic MQL4 Code Structure:</h3>
+  <pre><code>int OnInit() { 
+   // Initialization code
+   return(INIT_SUCCEEDED); 
+}
+
+void OnTick() { 
+   // Code executed on every market tick
+}</code></pre>
+  <p>Every EA has at least two functions: <code>OnInit()</code> which runs once when the EA starts, and <code>OnTick()</code> which runs whenever a new price tick arrives.</p>
+
+  <h2>Common MQL4 Functions</h2>
+  <p>Here are some essential MQL4 functions you should know:</p>
+  <table style="width:100%;border:1px solid #333;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#2563eb;color:#fff;">
+        <th style="padding:8px;border:1px solid #333">Function</th>
+        <th style="padding:8px;border:1px solid #333">Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>OrderSend()</td>
+        <td>Place a buy or sell order</td>
+      </tr>
+      <tr>
+        <td>OrderClose()</td>
+        <td>Close an open order</td>
+      </tr>
+      <tr>
+        <td>iMA()</td>
+        <td>Get the value of a Moving Average indicator</td>
+      </tr>
+      <tr>
+        <td>iRSI()</td>
+        <td>Get the value of Relative Strength Index (RSI)</td>
+      </tr>
+      <tr>
+        <td>OrderModify()</td>
+        <td>Modify stop loss, take profit, or price of an order</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Backtesting and Optimization</h2>
+  <p>Backtesting is a crucial step in automated trading. It lets you simulate how your EA would perform on historical data. MT4 provides a Strategy Tester where you can:</p>
+  <ul>
+    <li>Select a currency pair and timeframe.</li>
+    <li>Choose a testing period (e.g., last 6 months of data).</li>
+    <li>Run the EA and check performance metrics like profit, drawdown, and win rate.</li>
+    <li>Optimize parameters to improve performance without overfitting.</li>
+  </ul>
+
+  <h3>Example Metrics from Backtesting:</h3>
+  <table style="width:100%;border:1px solid #333;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#2563eb;color:#fff;">
+        <th style="padding:8px;border:1px solid #333">Metric</th>
+        <th style="padding:8px;border:1px solid #333">Example Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Profit</td>
+        <td>$1,200</td>
+      </tr>
+      <tr>
+        <td>Drawdown</td>
+        <td>5%</td>
+      </tr>
+      <tr>
+        <td>Win Rate</td>
+        <td>65%</td>
+      </tr>
+      <tr>
+        <td>Number of Trades</td>
+        <td>250</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Risk Management in MQL4</h2>
+  <p>Automated trading is powerful but risky. Always include risk management in your EA:</p>
+  <ul>
+    <li><strong>Stop Loss:</strong> Limits your losses on a trade.</li>
+    <li><strong>Take Profit:</strong> Automatically closes a trade when a target profit is reached.</li>
+    <li><strong>Lot Sizing:</strong> Adjust position size according to account balance.</li>
+    <li><strong>Max Open Trades:</strong> Limit the number of simultaneous trades to reduce risk.</li>
+  </ul>
+
+  <h2>Creating Custom Indicators</h2>
+  <p>MQL4 allows you to create indicators that are not available by default in MT4. For example:</p>
+  <ul>
+    <li>Custom Moving Averages with unique smoothing</li>
+    <li>Trend strength indicators</li>
+    <li>Volatility indicators for scalping</li>
+  </ul>
+  <pre><code>// Sample custom indicator
+int OnInit() {
+   IndicatorBuffers(1);
+   SetIndexBuffer(0,Buffer1);
+   return(INIT_SUCCEEDED);
+}
+
+int OnCalculate(...) {
+   // Calculate indicator values
+}</code></pre>
+
+  <h2>Scripts vs EAs</h2>
+  <p>Besides EAs, MQL4 supports scripts and custom indicators:</p>
+  <ul>
+    <li><strong>Scripts:</strong> Run once for a specific task, such as closing all orders or opening multiple trades.</li>
+    <li><strong>Indicators:</strong> Analyze data and provide visual signals on charts.</li>
+    <li><strong>EAs:</strong> Fully automated trading based on rules.</li>
+  </ul>
+
+  <h2>Best Practices for MQL4 Coding</h2>
+  <ul>
+    <li>Always test on a demo account before using real funds.</li>
+    <li>Use proper naming conventions for variables and functions.</li>
+    <li>Comment your code to make it readable and maintainable.</li>
+    <li>Use error handling for order execution to prevent crashes.</li>
+    <li>Keep strategies simple to avoid over-optimization.</li>
+  </ul>
+
+  <h2>Download Sample Bot</h2>
+  <p>To get started, you can download our beginner-friendly EA and test it in your MT4 platform:</p>
+  <ul>
+    <li><a href="#">Download Sample Moving Average EA</a></li>
+    <li><a href="#">Download RSI Crossover EA</a></li>
+  </ul>
+
+  <h2>Next Steps</h2>
+  <p>After learning MQL4 basics, focus on:</p>
+  <ul>
+    <li>Building complex strategies with multiple indicators.</li>
+    <li>Optimizing parameters using MT4 Strategy Tester.</li>
+    <li>Learning MQL5 for MetaTrader 5, which is more advanced and versatile.</li>
+    <li>Joining trading forums to share ideas and get feedback.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>MQL4 is a powerful tool for anyone looking to automate their trading strategy. From writing your first simple EA to creating complex multi-indicator bots, MQL4 opens doors to consistent, disciplined trading. Start with demo accounts, follow our step-by-step guides, and gradually move to live trading. By 2025, mastering MQL4 will make you a competitive algo trader in forex and CFD markets.</p>
+
+  <p>This guide now covers everything from setting up MT4, coding your first EA, using indicators, backtesting, risk management, and advanced strategies. With practice, patience, and testing, you can automate trades efficiently and safely.</p>
+</div>
+ <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="max-width:360px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo">SS</div>
+          <div>
+            <div style="font-weight:700">SolveSphere</div>
+            <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations. Designed for people who want quick, reliable solutions.</p>
+      </div>
+
+      <div style="flex:1;min-width:200px">
+        <h6>Explore</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+         <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
+       <li><a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a></li>
+       <li><a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a></li>
+       <li><a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a></li>
+      <li> <a href="https://www.solvesphere.co.in/trading.html">Trading</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Resources</h6>
+        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
+          <li><a href="https://www.solvesphere.co.in/about%20us.html">About</a></li>
+          <li><a href="https://www.solvesphere.co.in/contect%20us%20.html">Contact</a></li>
+          <li><a href="https://www.solvesphere.co.in/privacy%20policy.html">Privacy Policy</a></li>
+          <li><a href="https://www.solvesphere.co.in/disclimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div style="min-width:200px">
+        <h6>Contact & Follow</h6>
+        <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k18@gmail.com</p>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="X">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
+  </footer>
+
+
+<script>
+  document.getElementById('year').innerText = new Date().getFullYear();
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

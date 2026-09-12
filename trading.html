@@ -4,85 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trading Guides — SolveSphere</title>
-  <meta name="description" content="Step-by-step tech guides, troubleshooting tips, and tutorials for phones, PCs, and apps. SolveSphere Tech Guides make fixing issues simple." />
+  <meta name="description" content="Step-by-step tech guides, troubleshooting tips, and tutorials for trading, algos, and market simulators." />
   <link rel="icon" href="/favicon.ico" />
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
-      --radius:14px; --max-width:1200px; --shadow: 0 6px 24px rgba(2,6,23,0.6);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5} a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
-    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
-    .site-title{font-size:18px;font-weight:700}
-    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
-    .nav-links a:hover{background:var(--glass);color:#fff}
-    .search-wrap{display:flex;align-items:center;gap:10px}
-    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
-    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;margin:18px 0}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:28px;box-shadow:var(--shadow)}
-    .hero h1{font-size:28px;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0 0 18px}
-    .hero-actions{display:flex;gap:12px}
-    .stats{display:flex;gap:12px;margin-top:18px}
-    .stat{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;min-width:120px;text-align:center}
-    .stat strong{display:block;font-size:18px}
-    .stat span{color:var(--muted);font-size:13px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .featured{grid-column:1 / span 2;background:linear-gradient(90deg,rgba(6,182,212,0.1), rgba(124,58,237,0.06));padding:18px;border-radius:14px}
-    .featured img{width:100%;border-radius:10px;display:block}
-    .featured h3{margin:10px 0}
-    .category-card{background:var(--card);padding:14px;border-radius:12px}
-    .category-card h4{margin:0 0 8px}
-    .category-card p{color:var(--muted);margin:0}
-    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .post{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .post .thumb{height:120px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#0b1220);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-    .post h5{margin:10px 0 6px;font-size:16px}
-    .post p{color:var(--muted);font-size:14px;margin:0}
-    .tag{display:inline-block;margin-top:8px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:12px}
-    .sidebar{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px}
-    .newsletter input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6}
-    .newsletter button{margin-top:8px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#022;cursor:pointer}
-    footer{margin-top:38px;padding:28px 0;color:var(--muted)}
-    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .footer-grid h6{color:#fff;margin-bottom:8px}
-    .footer-legal{margin-top:22px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px}
-    @media (max-width:1000px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.posts{grid-template-columns:repeat(2,1fr)}.featured{grid-column:1}}
-    @media (max-width:700px){.nav-links{display:none}.search-input{display:none}.grid{grid-template-columns:1fr}.posts{grid-template-columns:1fr}.container{padding:16px}.logo{width:40px;height:40px}.site-title{font-size:16px}.hero h1{font-size:22px}}
-    .mobile-menu{display:none}
-    .hamburger{display:none;background:transparent;border:none;color:inherit}
-    @media(max-width:700px){.hamburger{display:inline-flex}.mobile-menu{display:block;position:fixed;right:14px;top:66px;background:#061224;padding:12px;border-radius:12px;box-shadow:var(--shadow)}.mobile-menu a{display:block;padding:8px 10px;color:var(--muted)}}
- 
-  
-    :root{
-      --bg:#0f1724; /* deep navy */
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#06b6d4; /* cyan */
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --max-width:1200px;
-      --shadow: 0 6px 24px rgba(2,6,23,0.6);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5}
-    a{color:inherit;text-decoration:none}
 
-    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
-
-  </style>
-</head>
-<body>
-
- <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4P390THX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -90,13 +15,76 @@
     gtag('js', new Date());
     gtag('config', 'G-C4P390THX7');
   </script>
+
+  <style>
+    :root{
+      --bg:#0f1724; 
+      --card:#0b1220; 
+      --muted:#94a3b8; 
+      --accent:#06b6d4; 
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px; 
+      --max-width:1200px; 
+      --shadow: 0 6px 24px rgba(2,6,23,0.6);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box} 
+    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071728 60%);color:#e6eef6;line-height:1.5} 
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+    
+    /* Navbar */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
+    .site-title{font-size:18px;font-weight:700}
+    .site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    .nav-links a:hover{background:var(--glass);color:#fff}
+    .search-wrap{display:flex;align-items:center;gap:10px;position:relative}
+    .search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
+    .cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px}
+    .subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
+    .subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
+    .hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
+    .mobile-menu{display:none}
+
+    /* Grid & Posts */
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .post{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;transition:transform 0.2s ease, border-color 0.2s ease}
+    .post:hover{transform:translateY(-2px);border-color:rgba(6,182,212,0.3)}
+    .post .thumb{height:140px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#0b1220);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;overflow:hidden}
+    .post h5{margin:12px 0 6px;font-size:16px;line-height:1.4}
+    .post p{color:var(--muted);font-size:13px;margin:0 0 12px;flex-grow:1}
+    .tag{display:inline-block;align-self:flex-start;padding:4px 8px;border-radius:999px;background:rgba(6,182,212,0.1);color:var(--accent);font-size:11px;font-weight:600}
+
+    /* Footer */
+    footer{margin-top:48px;padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.04)}
+    .footer-legal{margin-top:22px;border-top:1px solid rgba(255,255,255,0.03);padding-top:14px;font-size:13px}
+
+    @media (max-width:1000px){.posts{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:700px){
+      .nav-links{display:none}
+      .search-input{display:none}
+      .posts{grid-template-columns:1fr}
+      .container{padding:16px}
+      .hamburger{display:inline-flex}
+      .mobile-menu{
+        display:none;position:fixed;top:66px;right:14px;background:#061224;padding:12px;border-radius:12px;
+        box-shadow:var(--shadow);width:220px;flex-direction:column;gap:8px;z-index:9999;
+      }
+      .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px}
+      .mobile-menu a:hover{background:var(--glass);color:#fff}
+    }
+  </style>
 </head>
 <body>
 
-<!-- =================== NAVBAR HTML =================== -->
+<!-- NAVBAR -->
 <header class="container">
   <div class="navbar">
-    <!-- Brand / Logo -->
     <div class="brand">
       <div class="logo">SS</div>
       <div>
@@ -105,18 +93,15 @@
       </div>
     </div>
 
-    <!-- Desktop Navigation Links -->
     <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="Tech Guides.html">Tech Guides</a>
       <a href="AI  Tools.html">AI Tools</a>
-      <a href="Gaming and Apps.html">Gaming&apps</a>
-      <a href="trading.html">Trading</a>
-     
+      <a href="Gaming and Apps.html">Gaming&amp;apps</a>
+      <a href="trading.html" style="color:#fff">Trading</a>
       <a href="about us.html">About</a>
     </nav>
 
-    <!-- Search + Subscribe + Hamburger -->
     <div class="search-wrap">
       <input class="search-input" type="search" placeholder="Search guides, tools, fixes..." aria-label="Search" />
       <div class="cta" id="subscribeBtn">Subscribe</div>
@@ -131,195 +116,137 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu" style="display:none">
-     <a href="index.html">Home</a>
-      <a href="Tech Guides.html">Tech Guides</a>
-      <a href="AI  Tools.html">AI Tools</a>
-      <a href="Gaming and Apps.html">Gaming&apps</a>
-      <a href="trading.html">Trading</a>
-     
-      <a href="about us.html">About</a>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="Tech Guides.html">Tech Guides</a>
+    <a href="AI  Tools.html">AI Tools</a>
+    <a href="Gaming and Apps.html">Gaming&amp;apps</a>
+    <a href="trading.html">Trading</a>
+    <a href="about us.html">About</a>
   </div>
 </header>
 
-<!-- =================== NAVBAR CSS =================== -->
-<style>
-:root{
-  --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
-  --radius:14px; --shadow: 0 6px 24px rgba(2,6,23,0.6);
-}
-
-body { margin:0; font-family:Inter,sans-serif; background:var(--bg); color:#e6eef6; }
-a{ color:inherit; text-decoration:none; }
-
-.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;position:relative}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:var(--shadow)}
-.site-title{font-size:18px;font-weight:700}
-.site-sub{font-size:12px;color:var(--muted);margin-top:-4px}
-
-/* Desktop links */
-.nav-links{display:flex;gap:18px;align-items:center}
-.nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
-.nav-links a:hover{background:var(--glass);color:#fff}
-
-/* Search + Subscribe + Hamburger */
-.search-wrap{display:flex;align-items:center;gap:10px;position:relative}
-.search-input{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#e6eef6;min-width:160px}
-.cta{background:var(--accent);color:#002233;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-
-/* Subscribe Popup */
-.subscribe-popup{display:none;position:fixed;top:80px;right:20px;background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);z-index:10000;width:260px}
-.subscribe-popup input{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:#e6eef6;margin-bottom:8px}
-.subscribe-popup button{width:100%;padding:8px;border-radius:8px;border:none;background:var(--accent);color:#022;cursor:pointer}
-
-/* Hamburger button */
-.hamburger{display:none;background:transparent;border:none;color:inherit;font-size:22px;cursor:pointer}
-
-/* Mobile Styles */
-@media(max-width:700px){
-  .nav-links{display:none}
-  .search-input{display:none}
-  .hamburger{display:inline-flex}
-
-  .mobile-menu{
-    display:none; position:fixed; top:66px; right:14px; background:#061224; padding:12px; border-radius:12px;
-    box-shadow:var(--shadow); width:220px; flex-direction:column; gap:8px; z-index:9999;
-  }
-  .mobile-menu a{display:block;padding:8px 10px;color:var(--muted);font-weight:600;border-radius:8px}
-  .mobile-menu a:hover{background:var(--glass);color:#fff}
-}
-</style>
-
-<!-- =================== NAVBAR JS =================== -->
-<script>
-function toggleMobileMenu(){
-  const menu = document.getElementById('mobileMenu');
-  if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-}
-
-// Subscribe popup toggle
-const subscribeBtn = document.getElementById('subscribeBtn');
-const subscribePopup = document.getElementById('subscribePopup');
-subscribeBtn.addEventListener('click', () => {
-  subscribePopup.style.display = subscribePopup.style.display === 'block' ? 'none' : 'block';
-});
-document.addEventListener('click', function(e){
-  if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
-    subscribePopup.style.display='none';
-  }
-});
-</script>
-
-
-
-
-
 <main class="container">
-  <!-- HERO -->
- 
-
-   
-
-  <!-- POSTS LIST -->
-  <section style="margin-top:22px">
-    <h3 style="margin:0 0 12px"></h3>
+  <section style="margin-top:12px">
+    <h1 style="font-size:24px;margin:0 0 16px;color:#fff">Trading &amp; Quantitative Guides</h1>
+    
     <div class="posts">
-     
-      
-<a class="post" href="Trading/What is MQL4 and How to Use It for Algo Trading (Beginner’s Guide 2025).html">
-      <div class="thumb">
-        <img src="Trading/images/mql4 introduction/thmb.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-      </div>
-      <h5>What is MQL4 and How to Use It for Algo Trading? (Beginner’s Guide 2025)</h5>
-<P>MQL4 (MetaQuotes Language 4) is the programming language behind MetaTrader 4 (MT4), one of the most popular platforms for forex and CFD trading. It allows traders to create Expert Advisors (EAs), custom indicators, and scripts to automate trading strategies</P>
-      <div class="tag"> algo trading</div>
-    </a>
+      <!-- NEW BACKTESTLAB PRO POST -->
+      <a class="post" href="Trading/backtestlabpro_detailed_review.html">
+        <div class="thumb" style="background:linear-gradient(135deg,#06b6d4,#1e293b);flex-direction:column;gap:6px;">
+          <span style="font-size:22px;">📊</span>
+          <span style="color:#fff;font-size:14px;letter-spacing:0.5px;">BACKTESTLAB PRO</span>
+        </div>
+        <h5>BacktestLab Pro Review: Free AI Bot Testing &amp; Market Simulator</h5>
+        <p>A comprehensive review of the zero-paywall sandbox featuring unlimited multi-year historical candle replays, conversational BYO-AI bot automation, and an open strategy repository.</p>
+        <div class="tag">AI Tools &amp; Testing</div>
+      </a>
 
-<a class="post" href="Trading/Free MQL4 Trading Bot.html">
-      <div class="thumb">
-        <img src="Trading/images/Trading Bot Download/1.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-      </div>
-      <h5>Free MQL4 Trading Bot Code (2025) – Copy, Test & Build Your Own EA</h5>
-<P>Want a simple trading bot for MetaTrader 4 (MT4)? You can copy this free MQL4 trading bot code and test it instantly. This bot works on Moving Average crossover logic — perfect for beginners to learn algo trading. No downloads needed — just copy, paste, and start testing!</P>
-      <div class="tag"> algo trading</div>
-    </a>
+      <!-- EXISTING POSTS -->
+      <a class="post" href="Trading/What is MQL4 and How to Use It for Algo Trading (Beginner’s Guide 2025).html">
+        <div class="thumb">
+          <img src="Trading/images/mql4 introduction/thmb.png" alt="MQL4 Guide" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+        </div>
+        <h5>What is MQL4 and How to Use It for Algo Trading? (Beginner’s Guide 2025)</h5>
+        <p>MQL4 is the language behind MT4 for automated trading. Learn to build Expert Advisors (EAs), custom indicators, and automated execution scripts.</p>
+        <div class="tag">Algo Trading</div>
+      </a>
 
-<a class="post" href="Trading/Custom Algo Trading Bot Development in MQL4 – Get Your Logic Automated.html">
-      <div class="thumb">
-        <img src="Trading/images/how to develop an ea/1.PNG" alt="Spider-Man: Miles Morales" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-      </div>
-      <h5>Custom Algo Trading Bot Development in MQL4 – Get Your Logic Automated (2025)</h5>
-      <p>Automated trading in Forex using MQL4 can save time, reduce emotional trading errors, and optimize profits. This guide will help you understand how to create a custom Expert Advisor (EA) </p>
-      <div class="tag">Gaming & Apps</div>
-    </a>
+      <a class="post" href="Trading/Free MQL4 Trading Bot.html">
+        <div class="thumb">
+          <img src="Trading/images/Trading Bot Download/1.jpg" alt="Free Bot" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+        </div>
+        <h5>Free MQL4 Trading Bot Code (2025) – Copy, Test &amp; Build Your Own EA</h5>
+        <p>Copy this free moving average crossover bot code for MT4 to learn how automated trading logic executes in real-time without downloads.</p>
+        <div class="tag">Algo Trading</div>
+      </a>
 
-    <a class="post" href="Trading/Step-by-Step Guide to Setting Up MT4 Software and Charts for Algo Trading (Beginner’s Guide 2025).html">
-      <div class="thumb">
-        <img src="Trading/images/setup guid/thmb.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
-      </div>
-       <h5>Step-by-Step Guide to Setting Up MT4 Software and Charts for Algo Trading (Beginner’s Guide 2025)</h5>
-<P>MT4 Setup Guide
-MetaTrader 4 (MT4) is one of the most popular platforms for forex and algorithmic trading. If you want to automate your trading strategies using MQL4, the first step is to properly set up your MT4 platform and charts</P>
-      <div class="tag">Trading</div>
-    </a>
+      <a class="post" href="Trading/Custom Algo Trading Bot Development in MQL4 – Get Your Logic Automated.html">
+        <div class="thumb">
+          <img src="Trading/images/how to develop an ea/1.PNG" alt="Custom Bot Development" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+        </div>
+        <h5>Custom Algo Trading Bot Development in MQL4 – Get Your Logic Automated (2025)</h5>
+        <p>Automate your discretionary setups in Forex using MQL4 to eliminate emotional execution errors and systematize trade management.</p>
+        <div class="tag">Development</div>
+      </a>
 
-    </a>
+      <a class="post" href="Trading/Step-by-Step Guide to Setting Up MT4 Software and Charts for Algo Trading (Beginner’s Guide 2025).html">
+        <div class="thumb">
+          <img src="Trading/images/setup guid/thmb.jpg" alt="MT4 Setup Guide" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+        </div>
+        <h5>Step-by-Step Guide to Setting Up MT4 Software and Charts for Algo Trading (Beginner’s Guide 2025)</h5>
+        <p>A beginner's walkthrough on how to prepare the MetaTrader 4 desktop platform, import custom indicators, and format charts for automated trading.</p>
+        <div class="tag">Trading</div>
+      </a>
     </div>
   </section>
 </main>
 
 <!-- FOOTER -->
-  <footer class="container">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
-      <div style="max-width:360px">
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="logo">SS</div>
-          <div>
-            <div style="font-weight:700">SolveSphere</div>
-            <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
-          </div>
-        </div>
-        <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations. Designed for people who want quick, reliable solutions.</p>
-      </div>
-
-      <div style="flex:1;min-width:200px">
-        <h6>Explore</h6>
-        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
-         <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
-       <li><a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a></li>
-       <li><a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a></li>
-       <li><a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a></li>
-       <li><a href="trading.html">Trading</a></li>
-        </ul>
-      </div>
-
-      <div style="min-width:200px">
-        <h6>Resources</h6>
-        <ul style="list-style:none;padding:0;margin:0;color:var(--muted)">
-          <li><a href="https://www.solvesphere.co.in/about%20us.html">About</a></li>
-          <li><a href="https://www.solvesphere.co.in/contect%20us%20.html">Contact</a></li>
-          <li><a href="https://www.solvesphere.co.in/privacy%20policy.html">Privacy Policy</a></li>
-          <li><a href="https://www.solvesphere.co.in/disclimer.html">Disclaimer</a></li>
-        </ul>
-      </div>
-
-      <div style="min-width:200px">
-        <h6>Contact & Follow</h6>
-        <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k18@gmail.com</p>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="X">Instagram</a>
+<footer class="container">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+    <div style="max-width:360px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:700">SolveSphere</div>
+          <div style="color:var(--muted);font-size:13px">Smart Answers, Simple Guides</div>
         </div>
       </div>
+      <p style="color:var(--muted);margin-top:12px">SolveSphere publishes practical how-to guides, tool walkthroughs, and hand-tested recommendations designed for actionable solutions.</p>
     </div>
 
-    <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
-  </footer>
+    <div style="flex:1;min-width:200px">
+      <h6 style="color:#fff;margin-bottom:8px">Explore</h6>
+      <ul style="list-style:none;padding:0;margin:0;color:var(--muted);line-height:2">
+        <li><a href="https://www.solvesphere.co.in/index.html">Home</a></li>
+        <li><a href="https://www.solvesphere.co.in/Tech%20Guides.html">Tech Guides</a></li>
+        <li><a href="https://www.solvesphere.co.in/AI%20%20Tools.html">AI Tools</a></li>
+        <li><a href="https://www.solvesphere.co.in/Gaming%20and%20Apps.html">Gaming</a></li>
+        <li><a href="trading.html">Trading</a></li>
+      </ul>
+    </div>
 
+    <div style="min-width:200px">
+      <h6 style="color:#fff;margin-bottom:8px">Resources</h6>
+      <ul style="list-style:none;padding:0;margin:0;color:var(--muted);line-height:2">
+        <li><a href="https://www.solvesphere.co.in/about%20us.html">About</a></li>
+        <li><a href="https://www.solvesphere.co.in/contect%20us%20.html">Contact</a></li>
+        <li><a href="https://www.solvesphere.co.in/privacy%20policy.html">Privacy Policy</a></li>
+        <li><a href="https://www.solvesphere.co.in/disclimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+
+    <div style="min-width:200px">
+      <h6 style="color:#fff;margin-bottom:8px">Contact &amp; Follow</h6>
+      <p style="color:var(--muted);margin:0 0 8px">mehtabsingh2k18@gmail.com</p>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <a href="https://www.instagram.com/mehtab_767_/?next=%2Fhghh1152%2F" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal">© <span id="year"></span> SolveSphere. All rights reserved.</div>
+</footer>
 
 <script>
-  function toggleMobileMenu(){ var m = document.getElementById('mobileMenu'); if(!m) return; m.style.display = m.style.display === 'block' ? 'none' : 'block';}
+  function toggleMobileMenu(){ 
+    var m = document.getElementById('mobileMenu'); 
+    if(!m) return; 
+    m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+  }
+  
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const subscribePopup = document.getElementById('subscribePopup');
+  subscribeBtn.addEventListener('click', () => {
+    subscribePopup.style.display = (subscribePopup.style.display === 'block') ? 'none' : 'block';
+  });
+  document.addEventListener('click', function(e){
+    if(!subscribePopup.contains(e.target) && e.target !== subscribeBtn){
+      subscribePopup.style.display = 'none';
+    }
+  });
+
   document.getElementById('year').innerText = new Date().getFullYear();
 </script>
 
